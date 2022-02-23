@@ -1,6 +1,6 @@
 export {default as Default} from "./Default";
 
-export { default as Auth } from "./Auth";
+export { loggedIn, login, logout } from "./Auth";
 export { default as Navigation } from "./Navigation";
 export { default as Footer } from "./Footer";
 export { default as Home } from "./Home";

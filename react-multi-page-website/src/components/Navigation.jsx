@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { loggedIn, login, logout } from "./Auth";
 
 export default function Navigation() {
   return (
@@ -33,8 +34,8 @@ export default function Navigation() {
                 </NavLink>
               </li>
 							<li className="nav-item">
-                <NavLink className="nav-link" to="/login">
-                  Logout
+                <NavLink className="nav-link" onClick={ () => {loggedIn = 0} } to="/">
+								Logout
                 </NavLink>
               </li>
             </ul>
@@ -43,4 +44,5 @@ export default function Navigation() {
       </nav>
     </div>
   );
+	
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { loggedIn, login, logout } from "./Auth";
 
 export default function Login() {
   return (
@@ -8,7 +9,7 @@ export default function Login() {
         <div class="row align-items-center my-5">
           <div class="col-lg-5">
             <h1 class="font-weight-light">Login</h1>
-            <NavLink className="nav-link" to="/home">
+            <NavLink className="nav-link" onClick={ () => {loggedIn = 1} } to="/home">
 							Login
 							<span className="sr-only">(current)</span>
 						</NavLink>

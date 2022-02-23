@@ -3,7 +3,11 @@ import Alert from "react-bootstrap/Alert";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, NavLink } from "react-router-dom";
 import {
-	Auth,
+	loggedIn,
+	login,
+	logout,
+	
+	Navigation,
   Footer,
   Home,
   Grades,
@@ -16,23 +20,19 @@ import {
 	ForgotPassword,
 	SignUp,
 	Default,
-} from "./components/pageExports.js";
-
-var loggedIn = false;
-
-function login(){
-	loggedIn = true;
-}
-
-function logout(){
-	loggedIn = false;
-}
+} from "./components/pageExports";
 
 function App() {
-	
 	if(loggedIn){
 		return (
-				 <Router>
+			  <Router>
+				
+					<div class="container">
+						<div class="row align-items-center my-5">
+							<h3 class="font-weight-normal"> loggedIn boolean: {loggedIn} </h3>
+						</div>
+					</div>
+					
 					<Navigation />
 					<Routes>
 						<Route path="/home" element={<Home />} />
@@ -50,6 +50,13 @@ function App() {
 	else {
 		return(
 			<Router>
+			
+				<div class="container">
+					<div class="row align-items-center my-5">
+						<h3 class="font-weight-normal"> loggedIn boolean: {loggedIn} </h3>
+					</div>
+				</div>
+				
 				<Routes>
 					<Route path="/" element={<Login />} />
 					<Route path="/login" element={<Login />} />
@@ -61,48 +68,5 @@ function App() {
 	}
 }
 
-function Navigation() {
-  return (
-    <div className="navigation">
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <div className="container">
-          <NavLink className="navbar-brand" to="/home">
-            Whiteboard
-          </NavLink>
-          <div>
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
-                  Home
-                  <span className="sr-only">(current)</span>
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/grades">
-                  Grades
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/calendar">
-                  Calendar
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/activityStream">
-                  Activity Stream
-                </NavLink>
-              </li>
-							<li className="nav-item">
-                <NavLink className="nav-link" to="/">
-                  <button onClick={logout()}> Logout</button>
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  );
-}
 
 export default App;
