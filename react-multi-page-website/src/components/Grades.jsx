@@ -1,8 +1,10 @@
+import { Navigation, Footer } from "./pageExports";
 import React from "react";
 
 function Grades() {
   return (
     <div className="grades">
+      <Navigation />
       <div class="container">
         <div class="row align-items-center my-5">
           <div class="col-lg-7">
@@ -20,6 +22,7 @@ function Grades() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

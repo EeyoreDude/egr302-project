@@ -1,13 +1,15 @@
 import React from "react";
 import { Navigation, Footer } from "./pageExports";
 
-function Calendar() {
+export default function Assignment() {
+  
   return (
-    <div className="calendar">
+    <div className="home">
       <Navigation />
       <div class="container">
         <div class="row align-items-center my-5">
-          <div class="col-lg-7">
+          
+				<div class="col-lg-7">
             <img
               class="img-fluid rounded mb-4 mb-lg-0"
               src="https://bgcdc.org/wordpress/wp-content/uploads/2020/08/900x400.png"
@@ -15,7 +17,7 @@ function Calendar() {
             />
           </div>
           <div class="col-lg-5">
-            <h1 class="font-weight-light">Calendar</h1>
+            <h1 class="font-weight-light">Assignment</h1>
             <p>
               Text paragraph
             </p>
@@ -26,5 +28,3 @@ function Calendar() {
     </div>
   );
 }
-
-export default Calendar;
