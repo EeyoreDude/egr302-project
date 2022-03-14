@@ -1,14 +1,23 @@
-import React from "react";
 import { Navigation, Footer } from "./pageExports";
+import React from "react";
 
-export default function ActivityStream() {
+function ActivityStream() {
   return (
-    <div className="activityStream">
+    <div className="grades">
       <Navigation />
       <div class="container">
-        <h1 className="text-center mt-5">Activity Stream</h1>
+        <div class="row align-items-center my-5">
+          <div class="col-lg-5">
+            <h1 class="font-weight-light">Activity Stream</h1>
+            <p>
+              Text paragraph
+            </p>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
   );
 }
+
+export default ActivityStream;

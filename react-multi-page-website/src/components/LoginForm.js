@@ -12,8 +12,11 @@ function LoginForm() {
   }
 
   const handleSubmit = (event) => {
+    if(inputs.username == "Admin" && inputs.password == "123"){
+      window.location="/home";
+    }
     event.preventDefault();
-    alert("Username: " + inputs.username + "\nPassword: " + inputs.password);
+    alert("Invalid Username/Password\n\nAdmin Login:\nU: Admin\nP: 123");
   }
 
   return (
@@ -26,6 +29,7 @@ function LoginForm() {
         onChange={handleChange}
       />
       </label>
+      <br/>
       <label>Password:<br/>
         <input 
           type="text" 
