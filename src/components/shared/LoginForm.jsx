@@ -11,7 +11,7 @@ function LoginForm() {
 	};
 
 	const handleSubmit = (event) => {
-		if (inputs.username == "Admin" && inputs.password == "123") {
+		if (inputs.username === "Admin" && inputs.password === "123") {
 			window.location = "/home";
 		}
 		event.preventDefault();

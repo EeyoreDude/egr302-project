@@ -1,15 +1,6 @@
 import { useAuthSignInWithEmailAndPassword } from "@react-query-firebase/auth";
 import { auth } from "./firebase";
 
-function SignUp() {
-	const mutation = useAuthCreateUserWithEmailAndPassword(auth);
-
-	mutation.mutate({
-		email: "foo@bar.com",
-		password: "...",
-	});
-}
-
 function SignIn() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
