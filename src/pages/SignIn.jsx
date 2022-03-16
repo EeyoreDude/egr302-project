@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from 'react-toastify'
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
@@ -37,17 +38,16 @@ function SignIn() {
 			)
 
 			if (userCredential.user) {
-				navigate('/home')
+				navigate('/')
 			}
 
 		} catch (error) {
-			console.log(error)
+			toast.error('Bad User Credentials')
 		}
 
 	}
 
 	return (
-
 		<>
 			<div className="sign-in">
 				<div class="container">
@@ -80,22 +80,21 @@ function SignIn() {
 										onClick={() => setShowPassword((prevState) => !prevState)}
 									/>
 									<div className="text-left mb-3">
-										<Button type="submit" version="dark" isDisabled={false}>
+										<Button type="submit" version="btn-1 btnDark" isDisabled={false}>
 											Sign In
-											<ArrowRightIcon fill="#ffffff" width='25px' height='25px' />
+											{/* <ArrowRightIcon className="float-right" fill="#ffffff" width='25px' height='25px' /> */}
 										</Button>
 									</div>
-									<Link to="/forgot-password" className="h6 mt-2 font-weight-light">
-										Forgot Password?
-									</Link>
-									<br />
-									<Link to="/sign-up" className="h6 mt-2 font-weight-light">
-										Sign Up
-									</Link>
 								</form>
 
+								<Link to="/forgot-password" className="h6 mt-2 font-weight-light">
+									Forgot Password?
+								</Link>
+								<br />
+								<Link to="/sign-up" className="h6 mt-2 font-weight-light">
+									Sign Up
+								</Link>
 								{/* Google OAuth */}
-
 
 							</main>
 						</div>

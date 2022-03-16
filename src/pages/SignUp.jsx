@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify"
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import {
@@ -55,7 +56,7 @@ function SignUp() {
 
 			navigate('/home')
 		} catch (error) {
-			console.log(error)
+			toast.error('Something Went Wrong')
 		}
 	}
 
@@ -124,9 +125,9 @@ function SignUp() {
 										onClick={() => setShowPassword((prevState) => !prevState)}
 									/>
 									<div className="text-left mb-3">
-										<Button type="submit" version="dark" isDisabled={false}>
+										<Button type="submit" version="btn-1 btnDark" isDisabled={false}>
 											Sign Up
-											<ArrowRightIcon fill="#ffffff" width="25px" height="25px" />
+											{/* <ArrowRightIcon fill="#ffffff" width="25px" height="25px" /> */}
 										</Button>
 									</div>
 									<Link to="/sign-in" className="h6 mt-2 font-weight-light">
