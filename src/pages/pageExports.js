@@ -1,5 +1,5 @@
 export { default as ActivityStream } from "./ActivityStream"
-export { default as Calendar } from "./Calendar"
+export { default as CalendarPage } from "./CalendarPage"
 export { default as Grades } from "./Grades"
 export { default as Home } from "./Home"
 export { default as Navbar } from "./components/Navbar"

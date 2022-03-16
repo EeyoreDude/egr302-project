@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import {
 	ActivityStream,
-	Calendar,
+	CalendarPage,
 	Grades,
 	Home,
 	Navbar,
@@ -21,7 +21,7 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/calendar" element={<Calendar />} />
+					<Route path="/calendar" element={<CalendarPage />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream />} />
 					<Route path="/profile" element={<PrivateRoute />}>

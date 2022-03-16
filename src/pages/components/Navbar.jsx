@@ -46,8 +46,8 @@ function Navbar() {
                                 </p>
                             </li>
                             <li className="navbarListItem" onClick={() => navigate('/profile')}>
-                                <SignInIcon fill={pathMatchRoute('/profile') ? '#aaaaaa' : '#757575'} width='48px' height='48px' />
-                                <p className={pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListItemName'}>
+                                <SignInIcon fill={(pathMatchRoute('/profile') || pathMatchRoute('/sign-in') || pathMatchRoute('/sign-up') || pathMatchRoute('/forgot-password') ) ? '#aaaaaa' : '#757575'} width='48px' height='48px' />
+                                <p className={(pathMatchRoute('/profile') || pathMatchRoute('/sign-in') || pathMatchRoute('/sign-up') || pathMatchRoute('/forgot-password') ) ? 'navbarListItemNameActive' : 'navbarListItemName'}>
                                     Profile
                                 </p>
                             </li>
