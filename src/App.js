@@ -1,37 +1,33 @@
-import * as React from "react";
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate, NavLink } from "react-router-dom";
-import {	
-	Navigation,
-	Footer,
-	Home,
-	Grades,
-	Calendar,
-	ActivityStream,
-	Assignment,
-	Uauth,
-	SignIn,
-	ForgotPassword,
-	SignUp,
-	Default,
-} from "./components/pageExports";
+import { Nav } from "react-bootstrap";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {
+    ActivityStream,
+    Calendar,
+    Grades,
+    Home,
+    Navbar,
+    ForgotPassword,
+    SignIn,
+    SignUp
+} from "./pages/pageExports.js"
 
-function App() {
-		return (
-			  <Router>					
-					<Routes>
-						<Route path="/" element={<SignIn />} />
-						<Route path="/signIn" element={<SignIn />} />
-						<Route path="/forgotPassword" element={<ForgotPassword />} />
-						<Route path="/signUp" element={<SignUp />} />
-						<Route path="/home" element={<Home />} />
-						<Route path="/grades" element={<Grades />} />
-						<Route path="/calendar" element={<Calendar />} />
-						<Route path="/activityStream" element={<ActivityStream />} />
-						<Route path="/assignment" element={<Assignment />} />
-					</Routes>
-				</Router>
-		);
+function App(){
+    return (
+        <>
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/calendar' element={<Calendar />} />
+                    <Route path='/grades' element={<Grades />} />
+                    <Route path='/activity-stream' element={<ActivityStream />} />
+                    <Route path='/sign-in' element={<SignIn />} />
+                    <Route path='/sign-up' element={<SignUp />} />
+                    <Route path='/forgot-password' element={<ForgotPassword />} />
+                </Routes>
+            </Router>
+        </>
+    )
 }
-
 
 export default App;

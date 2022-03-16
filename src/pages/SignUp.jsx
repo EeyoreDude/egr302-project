@@ -37,7 +37,7 @@ function SignUp() {
 
 			const userCredential = await createUserWithEmailAndPassword(
 				auth,
-				email, 
+				email,
 				password
 			);
 
@@ -47,28 +47,28 @@ function SignUp() {
 				displayName: name
 			})
 
-			const formDataCopy = {...formData}
+			const formDataCopy = { ...formData }
 			delete formDataCopy.password
 			formDataCopy.timestamp = serverTimestamp()
-			
+
 			await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
 			navigate('/home')
-		} catch(error) {
+		} catch (error) {
 			console.log(error)
 		}
 	}
 
 	return (
 		<>
-			<div className="container">
-				<h1 className="">
-					<p className="font-weight-bold">Register Account</p>
-				</h1>
-
-				<main>
-					<form onSubmit={onSubmit}>
-						{/* <input
+			<div className="sign-in">
+				<div class="container">
+					<div class="row align-items-center my-5">
+						<div class="col-lg-5">
+							<h1 class="font-weight-light">Sign Up</h1>
+							<main>
+								<form onSubmit={onSubmit}>
+									{/* <input
 							type="text"
 							className="input-text-wide"
 							placeholder="First Name"
@@ -92,50 +92,53 @@ function SignUp() {
 							value={school} 
 							onChange={onChange}
 						/> */}
-						<input
-							type="text"
-							className="input-text-wide"
-							placeholder="Name"
-							id="name"
-							value={name}
-							onChange={onChange}
-						/>
-						<input
-							type="email"
-							className="input-text-wide"
-							placeholder="Email"
-							id="email"
-							value={email}
-							onChange={onChange}
-						/>
-						<br />
-						<input
-							type={showPassword ? "text" : "password"}
-							className="input-text-wide"
-							placeholder="Password"
-							id="password"
-							value={password}
-							onChange={onChange}
-						/>
-						<img
-							src={visibilityIcon}
-							alt="Show Password"
-							className="input-icon-right pos-relative"
-							onClick={() => setShowPassword((prevState) => !prevState)}
-						/>
-						<div className="text-left mb-3">
-							<Button type="submit" version="dark" isDisabled={false}>
-								Sign In
-								<ArrowRightIcon fill="#ffffff" width="25px" height="25px" />
-							</Button>
-						</div>
-						<Link to="/signIn" className="h6 mt-2 font-weight-light">
-							Back to Sign In
-						</Link>
-					</form>
+									<input
+										type="text"
+										className="input-text-wide"
+										placeholder="Name"
+										id="name"
+										value={name}
+										onChange={onChange}
+									/>
+									<input
+										type="email"
+										className="input-text-wide"
+										placeholder="Email"
+										id="email"
+										value={email}
+										onChange={onChange}
+									/>
+									<br />
+									<input
+										type={showPassword ? "text" : "password"}
+										className="input-text-wide"
+										placeholder="Password"
+										id="password"
+										value={password}
+										onChange={onChange}
+									/>
+									<img
+										src={visibilityIcon}
+										alt="Show Password"
+										className="input-icon-right pos-relative"
+										onClick={() => setShowPassword((prevState) => !prevState)}
+									/>
+									<div className="text-left mb-3">
+										<Button type="submit" version="dark" isDisabled={false}>
+											Sign In
+											<ArrowRightIcon fill="#ffffff" width="25px" height="25px" />
+										</Button>
+									</div>
+									<Link to="/sign-in" className="h6 mt-2 font-weight-light">
+										Back to Sign In
+									</Link>
+								</form>
 
-					{/* Google OAuth */}
-				</main>
+								{/* Google OAuth */}
+							</main>
+						</div>
+					</div>
+				</div>
 			</div>
 		</>
 	);
