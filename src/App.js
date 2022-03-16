@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, NavLink } from "react-router-dom";
 import {	
 	Navigation,

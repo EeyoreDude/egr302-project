@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
-import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import {
 	getAuth,
 	createUserWithEmailAndPassword,
 	updateProfile,
 } from "firebase/auth";
 import { db } from "../firebase.config"
+import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import Button from "./shared/Button";
 
 function SignUp() {
@@ -17,7 +17,7 @@ function SignUp() {
 		password: "",
 	});
 
-	const { firstName, lastName, school, email, password } = formData;
+	const { name, email, password } = formData;
 
 	const navigate = useNavigate();
 
@@ -28,6 +28,30 @@ function SignUp() {
 		}));
 	};
 
+	const onSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const auth = getAuth();
+
+			const userCredential = await createUserWithEmailAndPassword(
+				auth,
+				email, 
+				password
+			);
+
+			const user = userCredential.user
+
+			updateProfile(auth.currentUser, {
+				displayName: name
+			})
+
+			navigate('/home')
+		} catch(error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<>
 			<div className="container">
@@ -36,8 +60,8 @@ function SignUp() {
 				</h1>
 
 				<main>
-					<form>
-						<input
+					<form onSubmit={onSubmit}>
+						{/* <input
 							type="text"
 							className="input-text-wide"
 							placeholder="First Name"
@@ -58,7 +82,15 @@ function SignUp() {
 							className="input-text-wide"
 							placeholder="School"
 							id="school"
-							value={school}
+							value={school} 
+							onChange={onChange}
+						/> */}
+						<input
+							type="text"
+							className="input-text-wide"
+							placeholder="Name"
+							id="name"
+							value={name}
 							onChange={onChange}
 						/>
 						<input
