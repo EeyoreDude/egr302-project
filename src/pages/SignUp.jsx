@@ -69,29 +69,29 @@ function SignUp() {
 							<main>
 								<form onSubmit={onSubmit}>
 									{/* <input
-							type="text"
-							className="input-text-wide"
-							placeholder="First Name"
-							id="firstName"
-							value={firstName}
-							onChange={onChange}
-						/>
-						<input
-							type="text"
-							className="input-text-wide"
-							placeholder="Last Name"
-							id="lastName"
-							value={lastName}
-							onChange={onChange}
-						/>
-						<input
-							type="text"
-							className="input-text-wide"
-							placeholder="School"
-							id="school"
-							value={school} 
-							onChange={onChange}
-						/> */}
+										type="text"
+										className="input-text-wide"
+										placeholder="First Name"
+										id="firstName"
+										value={firstName}
+										onChange={onChange}
+									/>
+									<input
+										type="text"
+										className="input-text-wide"
+										placeholder="Last Name"
+										id="lastName"
+										value={lastName}
+										onChange={onChange}
+									/>
+									<input
+										type="text"
+										className="input-text-wide"
+										placeholder="School"
+										id="school"
+										value={school} 
+										onChange={onChange}
+									/> */}
 									<input
 										type="text"
 										className="input-text-wide"
@@ -125,7 +125,7 @@ function SignUp() {
 									/>
 									<div className="text-left mb-3">
 										<Button type="submit" version="dark" isDisabled={false}>
-											Sign In
+											Sign Up
 											<ArrowRightIcon fill="#ffffff" width="25px" height="25px" />
 										</Button>
 									</div>
