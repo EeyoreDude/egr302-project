@@ -1,6 +1,6 @@
-import e from "cors";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import Button from "./shared/Button";
@@ -21,8 +21,31 @@ function SignIn() {
 			...prevState,
 			[event.target.id]: event.target.value,
 		}));
-	};
+	}; 
 
+	
+	const onSubmit = async (event) => {
+		event.preventDefault()
+		
+		try{
+			const auth = getAuth()
+
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			)
+
+			if(userCredential.user){
+				navigate('/home')
+			}
+
+		} catch(error){
+			console.log(error)
+		}
+
+	}
+	
 	return (
 		<>
 			<div className="container">
@@ -31,7 +54,7 @@ function SignIn() {
 				</h1>
 
 				<main>
-					<form>
+					<form onSubmit={onSubmit}>
 						<input
 							type="email"
 							className="input-text-wide"
