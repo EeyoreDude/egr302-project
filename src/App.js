@@ -7,6 +7,10 @@ import {
 	Grades,
 	Home,
 	Navbar,
+
+	Assignment,
+	GradedAssignment,
+
 	ForgotPassword,
 	SignIn,
 	SignUp,
@@ -24,6 +28,11 @@ function App() {
 					<Route path="/calendar" element={<CalendarPage />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream />} />
+					
+					<Route path="/assignment" element={<Assignment />} />
+					<Route path="/graded-assignment" element={<GradedAssignment />} />
+					
+
 					<Route path="/profile" element={<PrivateRoute />}>
 						<Route path="/profile" element={<Profile />} />
 					</Route>
