@@ -31,7 +31,6 @@ function App() {
 					
 					<Route path="/assignment" element={<Assignment />} />
 					<Route path="/graded-assignment" element={<GradedAssignment />} />
-					
 
 					<Route path="/profile" element={<PrivateRoute />}>
 						<Route path="/profile" element={<Profile />} />
