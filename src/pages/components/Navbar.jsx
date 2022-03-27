@@ -17,7 +17,6 @@ function Navbar() {
 
     return (
         <>
-            <nav className="navbarNav">
             <ul className="navbarListItems">
                 <li className="navbarListItem" onClick={() => navigate('/')}>
                     <HomeIcon fill={pathMatchRoute('/') ? '#aaaaaa' : '#757575'} width='48px' height='48px' />
@@ -50,7 +49,6 @@ function Navbar() {
                     </p>
                 </li>
             </ul>
-            </nav>
         </>
     )
 }

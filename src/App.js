@@ -23,6 +23,7 @@ function App() {
 		<>
 			<Router>
 				<Navbar />
+				<div className="centralContainer">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/calendar" element={<CalendarPage />} />
@@ -39,6 +40,7 @@ function App() {
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/forgot-password" element={<ForgotPassword />} />
 				</Routes>
+				</div>
 			</Router>
 
 			<ToastContainer

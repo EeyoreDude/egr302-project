@@ -5,10 +5,10 @@ function ActivityStream(){
 
     return (
         <>
-            <div className="activityStream">
+            <div className="pageLayout">
                 <div className="container">
                     <div className="row align-items-center my-5">
-                        <div className="col-lg-5">
+                        <div className="col-lg-10">
                             <h1 className="font-weight-light">Stream</h1>
                             <h4 className="font-weight-light">Today</h4>
                                 <div className="m-4 streamCard streamText" onClick={() => navigate('/assignment')}>

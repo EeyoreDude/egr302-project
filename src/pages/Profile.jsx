@@ -54,7 +54,7 @@ function Profile() {
 
     return (
         <>
-            <div className="profile">
+            <div className="pageLayout">
                 <div className="container">
                     <div className="row align-items-center my-5">
                         <div className="col-lg-5">

@@ -49,12 +49,13 @@ function SignIn() {
 
 	return (
 		<>
-			<div className="sign-in">
+			<div className="pageLayout">
 				<div className="container">
 					<div className="row align-items-center my-5">
-						<div className="col-lg-5">
+						<div className="col-lg-10">
 							<h1 className="font-weight-light">Sign In</h1>
 							<main>
+								<div className="formCard">
 								<form onSubmit={onSubmit}>
 									<input
 										type="email"
@@ -79,13 +80,14 @@ function SignIn() {
 										className="input-icon-right pos-relative"
 										onClick={() => setShowPassword((prevState) => !prevState)}
 									/>
-									<div className="text-left mb-3">
+									<div className="text-left">
 										<Button type="submit" version="btn-1 btnDark" isDisabled={false}>
 											Sign In
 											{/* <ArrowRightIcon className="float-right" fill="#ffffff" width='25px' height='25px' /> */}
 										</Button>
 									</div>
 								</form>
+								</div>
 
 								<Link to="/forgot-password" className="h6 mt-2 font-weight-light">
 									Forgot Password?
