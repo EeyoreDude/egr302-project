@@ -2,6 +2,11 @@
 	EGR302 SPECIALLY ADDED STYLES
 **/
 
+.calendarContainer{
+	height: 50vh;
+	width: 50vw;
+}
+
 .centralContainer {
 	display: flex;
 	flex-direction: row;
