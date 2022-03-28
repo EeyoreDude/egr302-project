@@ -62,12 +62,13 @@ function SignUp() {
 
 	return (
 		<>
-			<div className="sign-in">
-				<div class="container">
-					<div class="row align-items-center my-5">
-						<div class="col-lg-5">
-							<h1 class="font-weight-light">Sign Up</h1>
+			<div className="pageLayout">
+				<div className="container">
+					<div className="row align-items-center my-5">
+						<div className="col-lg-5">
+							<h1 className="font-weight-light">Sign Up</h1>
 							<main>
+							<div className="formCard">
 								<form onSubmit={onSubmit}>
 									{/* <input
 										type="text"
@@ -124,16 +125,18 @@ function SignUp() {
 										className="input-icon-right pos-relative"
 										onClick={() => setShowPassword((prevState) => !prevState)}
 									/>
-									<div className="text-left mb-3">
+									<div className="text-left">
 										<Button type="submit" version="btn-1 btnDark" isDisabled={false}>
 											Sign Up
 											{/* <ArrowRightIcon fill="#ffffff" width="25px" height="25px" /> */}
 										</Button>
 									</div>
-									<Link to="/sign-in" className="h6 mt-2 font-weight-light">
-										Back to Sign In
-									</Link>
 								</form>
+								</div>
+
+								<Link to="/sign-in" className="h6 mt-2 font-weight-light">
+									Back to Sign In
+								</Link>
 
 								{/* Google OAuth */}
 							</main>

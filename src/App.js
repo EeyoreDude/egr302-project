@@ -7,6 +7,10 @@ import {
 	Grades,
 	Home,
 	Navbar,
+
+	Assignment,
+	GradedAssignment,
+
 	ForgotPassword,
 	SignIn,
 	SignUp,
@@ -19,11 +23,16 @@ function App() {
 		<>
 			<Router>
 				<Navbar />
+				<div className="centralContainer">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/calendar" element={<CalendarPage />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream />} />
+					
+					<Route path="/assignment" element={<Assignment />} />
+					<Route path="/graded-assignment" element={<GradedAssignment />} />
+
 					<Route path="/profile" element={<PrivateRoute />}>
 						<Route path="/profile" element={<Profile />} />
 					</Route>
@@ -31,6 +40,7 @@ function App() {
 					<Route path="/sign-up" element={<SignUp />} />
 					<Route path="/forgot-password" element={<ForgotPassword />} />
 				</Routes>
+				</div>
 			</Router>
 
 			<ToastContainer
