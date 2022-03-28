@@ -18,6 +18,7 @@ function CalendarPage(){
                             <Calendar
                             localizer={localizer}
                             defaultView = "month"
+                            views = {['month','week']}
                             />
                             </div>
                         </div>
