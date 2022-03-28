@@ -6,7 +6,7 @@ function CalendarPage(){
                     <div className="row align-items-center my-5">
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Calendar</h1>
-                            <p>...</p>
+                            <p>...y</p>
                         </div>
                     </div>
                 </div>
