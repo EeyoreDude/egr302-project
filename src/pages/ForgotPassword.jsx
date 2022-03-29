@@ -8,13 +8,19 @@ import Button from "./shared/Button";
 
 function ForgotPassword() {
 	const [email, setEmail] = useState('')
+ 
+	const onChange = (event) => setEmail(event.target.value)
 
-	const onChange = event => {
-
-	}
-
-	const onSubmit = event => {
+	const onSubmit = async (event) => {
 		event.preventDefault()
+		try {
+			const auth = getAuth()
+			await sendPasswordResetEmail(auth, email)
+			toast.success("Email was sent!")
+		} catch(error){
+			toast.error("Could not send the email.")
+		}
+
 	}
 
 	return (
@@ -39,13 +45,13 @@ function ForgotPassword() {
 										value={email}
 										onChange={onChange}
 									/>
-								</form>
-								<div className="text-left">
+									<div className="text-left">
 									<Button type="submit" version="btn-1 btnDark" isDisabled={false}>
 										Send Email
 										{/* <ArrowRightIcon className="float-right" fill="#ffffff" width='25px' height='25px' /> */}
 									</Button>
 								</div>
+								</form>
 							</div>
 							<Link to="/sign-in" className="h6 mt-2 font-weight-light">
 								Back to Sign In
