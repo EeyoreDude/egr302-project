@@ -2,6 +2,12 @@
 	EGR302 SPECIALLY ADDED STYLES
 **/
 
+.calendarContainer{
+	height: 70vh;
+	width: 55vw;
+	
+}
+
 .centralContainer {
 	display: flex;
 	flex-direction: row;
@@ -130,6 +136,18 @@
 	padding: 1rem;
 	box-shadow: rgba(0, 0, 0, 0.2);
 	width: fit-content;
+}
+
+.eventFormCard {
+	background-color: #ebebeb;
+	margin-top: 20rem;
+	margin-left: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.2);
+	width: 250px;
+	height: fit-content;
 }
 
 .streamCard {

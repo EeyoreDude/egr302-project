@@ -17,6 +17,7 @@ import {
 	Profile,
 } from "./pages/pageExports.js";
 import PrivateRoute from "./pages/components/PrivateRoute";
+import DemoEvents from './pages/components/DemoEvents';
 
 function App() {
 	return (
@@ -26,7 +27,7 @@ function App() {
 				<div className="centralContainer">
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/calendar" element={<CalendarPage />} />
+					<Route path="/calendar" element={<CalendarPage events = {DemoEvents} />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream />} />
 					
