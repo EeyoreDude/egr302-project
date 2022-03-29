@@ -3,9 +3,6 @@ import {Calendar, momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useState } from 'react'
-import DemoEvents from './components/DemoEvents'
-
-const localizer = momentLocalizer(moment)
 
 
 
@@ -13,8 +10,11 @@ const localizer = momentLocalizer(moment)
 
 
 
-function CalendarPage(){
 
+
+function CalendarPage({events}){
+
+    const localizer = momentLocalizer(moment)
     const [addingDate, setAddingDate] = useState(false)
 
     //for when we can modify events maybe
@@ -52,7 +52,7 @@ function CalendarPage(){
                             localizer={localizer}
                             defaultView = "month"
                             views = {['month','week']}
-                            events = {DemoEvents}
+                            events = {events}
                             />
                             </div>
                         </div>     
