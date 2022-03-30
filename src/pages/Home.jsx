@@ -20,6 +20,7 @@ export default function Home() {
                         <div class="col-lg-5">
                             <h1 class="font-weight-light">Home</h1>
                             <p>Welcome, {user ? user.displayName : 'please sign in or register to use most features'}!</p>
+                            
                         </div>
                     </div>
                 </div>
