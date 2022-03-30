@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 
-function ActivityStream(){
+
+
+function ActivityStream({events}){
     const navigate = useNavigate()
 
     return (
@@ -22,6 +24,7 @@ function ActivityStream(){
                                     <h6>Assignment 2</h6>
                                     <p className="m-2 small w-100">Do a 4MAT on the reading from class.</p>
                                 </div>
+                                
                         </div>
                     </div>
                 </div>
