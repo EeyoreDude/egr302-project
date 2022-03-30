@@ -1,4 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom"
+import { useState } from "react"
+import { getAuth } from "firebase/auth"
+
 import { ReactComponent as SignInIcon } from '../../assets/svg/personIcon.svg'
 import { ReactComponent as ActivityStreamIcon } from '../../assets/svg/activityStreamIcon.svg'
 import { ReactComponent as HomeIcon } from '../../assets/svg/homeIcon.svg'
@@ -6,6 +9,9 @@ import { ReactComponent as GradesIcon } from '../../assets/svg/gradesIcon.svg'
 import { ReactComponent as CalendarIcon } from '../../assets/svg/calendarIcon.svg'
 
 function Navbar() {
+
+    const auth = getAuth()
+
     const navigate = useNavigate()
     const location = useLocation()
     
@@ -45,7 +51,7 @@ function Navbar() {
                 <li className="navbarListItem" onClick={() => navigate('/profile')}>
                     <SignInIcon fill={(pathMatchRoute('/profile') || pathMatchRoute('/sign-in') || pathMatchRoute('/sign-up') || pathMatchRoute('/forgot-password') ) ? '#aaaaaa' : '#757575'} width='48px' height='48px' />
                     <p className={(pathMatchRoute('/profile') || pathMatchRoute('/sign-in') || pathMatchRoute('/sign-up') || pathMatchRoute('/forgot-password') ) ? 'navbarListItemNameActive' : 'navbarListItemName'}>
-                        Profile
+                        {auth.currentUser == null ? 'Sign In' : 'Profile'}
                     </p>
                 </li>
             </ul>
