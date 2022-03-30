@@ -93,16 +93,11 @@ function CalendarPage({events, handleAdd}){
                         </div>
                         <div className="">
                             <div className='eventFormCard'>
-                                <button className="m-0 btn-1 btnDark" onClick={showAddEventForm}>Create New Event</button>
+                                    <button  onClick={showAddEventForm}>Create New Event</button>
                                 {addingDate && addDateForm}
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='eventFormCard'>
-                        <button  onClick={showAddEventForm}>Create New Event</button>
-                    {addingDate && addDateForm}
-
                 </div>
             </div>
         </>
