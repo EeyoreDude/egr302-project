@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 
-function ActivityStream(event){
+
+
+function ActivityStream({events}){
     const navigate = useNavigate()
 
     return (
