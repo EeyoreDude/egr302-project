@@ -18,8 +18,18 @@ import {
 } from "./pages/pageExports.js";
 import PrivateRoute from "./pages/components/PrivateRoute";
 import DemoEvents from './pages/components/DemoEvents';
+import { useState } from "react";
+
+
+
 
 function App() {
+
+const [calendarEvents, setEvents] = useState(DemoEvents)
+const addEvent = (newEvent) => {
+	setEvents([newEvent, ...calendarEvents])
+}
+
 	return (
 		<>
 			<Router>
@@ -27,7 +37,7 @@ function App() {
 				<div className="centralContainer">
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/calendar" element={<CalendarPage events = {DemoEvents} />} />
+					<Route path="/calendar" element={<CalendarPage events = {calendarEvents} handleAdd = {addEvent} />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream />} />
 					

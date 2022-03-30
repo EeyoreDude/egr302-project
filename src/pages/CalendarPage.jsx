@@ -3,7 +3,7 @@ import {Calendar, momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useState } from 'react'
-
+import Button from './shared/Button'
 
 /**
  * takes in a list of "events" to display events on calendar
@@ -16,13 +16,42 @@ import { useState } from 'react'
 
 
 
-function CalendarPage({events}){
+function CalendarPage({events, handleAdd}){
 
+    //calendar stuff
     const localizer = momentLocalizer(moment)
-    const [addingDate, setAddingDate] = useState(false)
+    
+    
+    //new event data state holders
+    const [title, setTitle] = useState("")
+    const [date, updateDate] = useState()
 
-    //for when we can modify events maybe
-    //const [events, setEvents] = useState()
+    //new event data handlers
+    const handleTitle = (e) => {
+        setTitle(e.target.value)
+    }
+
+    const handleDate = (e) =>{
+        const temp = new Date(e.target.value)
+        updateDate(temp.setDate(temp.getDate() +1))
+    }
+
+    const addEventHandler = (e) => {
+        e.preventDefault()
+        const newEvent = {
+            title: title,
+            start: date,
+            end: date
+        }
+        handleAdd(newEvent)
+        
+        setTitle("")
+        //updateDate()
+    }
+    
+
+    //event form stuff
+    const [addingDate, setAddingDate] = useState(false)
 
     const showAddEventForm = () => {
         setAddingDate((prev)=> {
@@ -31,18 +60,19 @@ function CalendarPage({events}){
     }
 
     const addDateForm = (
-        <form>
+        <form onSubmit={addEventHandler}>
             <br></br>
             Event Name: 
             <br></br>
-            <input type="text"/>
+            <input onChange={handleTitle} value = {title} placeholder = "Add Event Name" type="text"/>
             <br></br><br></br>
             Event Date:
             <br></br>
-            <input type= "date"/>
+            <input  type= "date" onChange={handleDate}/>
             <br></br><br></br>
-            <input type= "submit" value = "Add Event"/>
+            <Button isDisabled = {title === "" || date === null} type = "submit"> Add Event </Button>
         </form>)
+
 
     return (
         <>
@@ -56,14 +86,14 @@ function CalendarPage({events}){
                             localizer={localizer}
                             defaultView = "month"
                             views = {['month','week']}
-                            events = {events}
+                            events = {calendarEvents}
                             />
                             </div>
                         </div>     
                     </div>
                 </div>
                 <div className='eventFormCard'>
-                        <button onClick={showAddEventForm}>Create New Event</button>
+                        <button  onClick={showAddEventForm}>Create New Event</button>
                     {addingDate && addDateForm}
                 </div>
             </div>
