@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import StreamCard from "./pages/components/StreamCard"
+import StreamCard from "./components/StreamCard"
 
 
 function Stream({events}) {
@@ -15,11 +15,7 @@ return (
     <div className="col-lg-10">
                             <h1 className="font-weight-light">Stream</h1>
                             <h4 className="font-weight-light">Today</h4>
-                                <div className="m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
-                                    <p className="small float-right font-weight-light">due 11:59pm</p>
-                                    <h6>Assignment 1</h6>
-                                    <p className="m-2 small w-100">Write an essay about something you don't care about.</p>
-                            </div>
+                               
                             <h4 className="font-weight-light">Upcoming</h4>
                                 <div className=" m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
                                     <p className="small float-right font-weight-light">due 10:30am</p>
