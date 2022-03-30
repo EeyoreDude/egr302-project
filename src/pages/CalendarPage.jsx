@@ -34,6 +34,15 @@ function CalendarPage({events, handleAdd}){
     const handleDate = (e) =>{
         const temp = new Date(e.target.value)
         updateDate(temp.setDate(temp.getDate() +1))
+
+
+        //const newDateString = e.target.value
+
+        //const year = +newDateString.substring(0,4)
+        //const day = +newDateString.substring(5,7)
+        //const month = +newDateString.substring(8)
+
+        //updateDate(new Date(year, month, day))
     }
 
     const addEventHandler = (e) => {
