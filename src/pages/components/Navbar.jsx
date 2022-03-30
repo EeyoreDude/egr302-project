@@ -5,6 +5,7 @@ import { ReactComponent as HomeIcon } from '../../assets/svg/homeIcon.svg'
 import { ReactComponent as GradesIcon } from '../../assets/svg/gradesIcon.svg'
 import { ReactComponent as CalendarIcon } from '../../assets/svg/calendarIcon.svg'
 
+
 function Navbar() {
     const navigate = useNavigate()
     const location = useLocation()
@@ -21,6 +22,7 @@ function Navbar() {
                 <nav className="navbarNav">
                     <div className="container">
                         <ul className="navbarListItems">
+                            <li > <img src='public\blackLogo.png' alt="logo" /></li>
                             <li className="navbarListItem" onClick={() => navigate('/')}>
                                 <HomeIcon fill={pathMatchRoute('/') ? '#aaaaaa' : '#757575'} width='48px' height='48px' />
                                 <p className={pathMatchRoute('/') ? 'navbarListItemNameActive' : 'navbarListItemName'}>

@@ -169,6 +169,13 @@
 }
 
 
+.borderexample {
+ border-style:solid;
+ border-color:#6c757d;
+}
+
+
+
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
