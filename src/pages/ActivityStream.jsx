@@ -10,7 +10,7 @@ function ActivityStream({events}){
             <div className="pageLayout">
                 <div className="container">
                     <div className="row align-items-center my-5">
-                        <Stream/>
+                        <Stream eventList = {events}/>
                     </div>
                 </div>
             </div>
