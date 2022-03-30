@@ -39,7 +39,7 @@ const addEvent = (newEvent) => {
 					<Route path="/" element={<Home />} />
 					<Route path="/calendar" element={<CalendarPage events = {calendarEvents} handleAdd = {addEvent} />} />
 					<Route path="/grades" element={<Grades />} />
-					<Route path="/activity-stream" element={<ActivityStream />} />
+					<Route path="/activity-stream" element={<ActivityStream events = {calendarEvents} />} />
 					
 					<Route path="/assignment" element={<Assignment />} />
 					<Route path="/graded-assignment" element={<GradedAssignment />} />

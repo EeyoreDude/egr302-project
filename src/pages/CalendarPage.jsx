@@ -86,7 +86,7 @@ function CalendarPage({events, handleAdd}){
                             localizer={localizer}
                             defaultView = "month"
                             views = {['month','week']}
-                            events = {calendarEvents}
+                            events = {events}
                             />
                             </div>
                         </div>     
