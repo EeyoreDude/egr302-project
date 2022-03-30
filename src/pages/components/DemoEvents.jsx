@@ -10,20 +10,29 @@ const DemoEvents = [
         title: "INDIV UPDATE 2: Sprint 3/4",
         start: new Date(2022,2,30),
         end: new Date(2022,2,30),
-        course: "EGR302"
+        course: "EGR302",
+        complete: false,
+        graded: false,
+        grade: 0.00
     },
     {
         title: "PRES 5: Sprint 4",
         start: new Date(2022,2,30),
         end: new Date(2022,2,30),
-        course: "EGR302"
+        course: "EGR302",
+        complete: false,
+        graded: false,
+        grade: 0.00
 
     },
     {
         title: "zyBooks(10.1-10.3)",
         start: new Date(2022,2,29),
         end: new Date(2022,2,29),
-        course: "EGR325"
+        course: "EGR325",
+        complete: true,
+        graded: true,
+        grade: 100.00
     }
 ]
 

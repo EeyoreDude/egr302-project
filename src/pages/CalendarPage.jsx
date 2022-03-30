@@ -5,7 +5,11 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useState } from 'react'
 
 
-
+/**
+ * takes in a list of "events" to display events on calendar
+ * the events are currently coming from a file being imported into App.js and passed into this function as a param
+ * if you want to see or modify those "events", for now you can find them in src/components/DemoEvents.jsx
+ */
 
 
 
@@ -59,12 +63,9 @@ function CalendarPage({events}){
                     </div>
                 </div>
                 <div className='eventFormCard'>
-                    
                         <button onClick={showAddEventForm}>Create New Event</button>
-                    
                     {addingDate && addDateForm}
                 </div>
-                
             </div>
         </>
     )
