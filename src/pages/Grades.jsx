@@ -6,7 +6,7 @@ function Grades(){
                     <div class="row align-items-center my-5">
                         <div class="col-lg-5">
                             <h1 class="font-weight-light">Grades</h1>
-                            <p>...</p>
+                            <p> ...</p>
                         </div>
                     </div>
                 </div>
