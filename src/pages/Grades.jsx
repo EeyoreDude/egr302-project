@@ -15,6 +15,7 @@ function Grades(){
                             <div id="content-wrapper" class="ic-Layout-contentWrapper">
 
                             <div className="pageLayout">
+                                <thead>
                             <tr>
                             <th scope="col"> Name</th>
                             <th scope="col"> Due</th>
@@ -22,22 +23,26 @@ function Grades(){
                             <th scope="col" class="assignment_score"> Score</th>
                             <th scope="col" class="possible"> Out of</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <td className="font-weight-light">Assignment 1 </td>
-                                <div className="m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
-                                    <p className="small float-right font-weight-light">100</p>
+                                <tr className="m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
+                                <td className="small float-right font-weight-light">100</td>
+                                    </tr>
                                     
-                                    
-                            </div>
+                            
                             <td className="font-weight-light">Assignment 2</td>
-                                <div className=" m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
-                                    <p className="small float-right font-weight-light">--%</p>
+                                <tr className=" m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
+                                <td className="small float-right font-weight-light">100</td>
                                 
-                                </div>
+                                </tr>
                              <td className="font-weight-light">Assignment 3</td>
-                                <div className=" m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
+                                <tr className=" m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
                                     <p className="small float-right font-weight-light">--%</p>
                                     
-                                </div>
+                                </tr>
+                                
+                                </tbody>
                                 </div>
                             </div>
                         </div>
