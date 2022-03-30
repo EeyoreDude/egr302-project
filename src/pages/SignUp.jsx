@@ -54,7 +54,7 @@ function SignUp() {
 
 			await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
-			navigate('/home')
+			navigate('/')
 		} catch (error) {
 			toast.error('Something Went Wrong')
 		}
