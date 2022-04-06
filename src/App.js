@@ -10,6 +10,7 @@ import {
 
 	Assignment,
 	GradedAssignment,
+	CourseGrades,
 
 	ForgotPassword,
 	SignIn,
@@ -43,6 +44,7 @@ const addEvent = (newEvent) => {
 					
 					<Route path="/assignment" element={<Assignment />} />
 					<Route path="/graded-assignment" element={<GradedAssignment />} />
+					<Route path="/course-grades" element={<CourseGrades />} />
 
 					<Route path="/profile" element={<PrivateRoute />}>
 						<Route path="/profile" element={<Profile />} />
