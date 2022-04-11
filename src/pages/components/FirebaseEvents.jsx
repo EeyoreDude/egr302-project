@@ -57,7 +57,7 @@ function FirebaseEvents() {
                                             <h5 key={event.id}>
                                                 {event.data.title}
                                                 <ul className="h6 small">
-                                                    <li>Due: {event.data.start.toDate().toLocaleDateString()} at {event.data.start.toDate().toLocaleTimeString.subStr()}</li>
+                                                    <li>Due: {event.data.start.toDate().toLocaleDateString()} at {event.data.start.toDate().toLocaleTimeString()}</li>
                                                 </ul>
                                             </h5>
                                         ))}
