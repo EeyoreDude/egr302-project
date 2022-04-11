@@ -4,66 +4,81 @@ import { db } from '../../firebase.config'
 import {toast} from 'react-toastify'
 import { useParams } from "react-router"
 
-class Event {
-    constructor(title, course, start, end, complete, graded, grade){
-        this.title = title;
-        this.course = course;
-        this.start = start;
-        this.end = end;
-        this.complete = complete;
-        this.graded = graded;
-        this.grade = grade;
-    }
+// class Event {
+//     constructor(title, course, start, end, complete, graded, grade){
+//         this.title = title;
+//         this.course = course;
+//         this.start = start;
+//         this.end = end;
+//         this.complete = complete;
+//         this.graded = graded;
+//         this.grade = grade;
+//     }
 
-    toString(){
-        return this.name + ' is due at ' + this.end;
-    }
-}
+//     toString(){
+//         return this.name + ' is due at ' + this.end;
+//     }
+// }
 
-const eventConverter = {
-    toFirestore: (event) => {
-        return {
-            title: event.title,
-            course: event.course,
-            start: event.start.getMilliseconds(),
-            end: event.end.getMilliseconds(),
-            complete: event.complete,
-            graded: event.graded,
-            grad: event.grade
-        };
-    },
-    fromFirestore: (snapshot) => {
-        const data = snapshot.data();
-        return new Event(data.title, data.course, data.start.toDate(), data.end.toDate(), data.complete, data.graded, data.grade);
-    }
-}
+// const eventConverter = {
+//     toFirestore: (event) => {
+//         return {
+//             title: event.title,
+//             course: event.course,
+//             start: event.start.getMilliseconds(),
+//             end: event.end.getMilliseconds(),
+//             complete: event.complete,
+//             graded: event.graded,
+//             grade: event.grade
+//         };
+//     },
+//     fromFirestore: (snapshot) => {
+//         const data = snapshot.data();
+//         return new Event(data.title, data.course, data.start.toDate(), data.end.toDate(), data.complete, data.graded, data.grade);
+//     }
+// }
 
 function FirebaseEvents() {
+    // create the events variable
     const [events, setEvents] = useState()
-    const [loading, setLoading] = useState(true)
 
+    // not relevant yet
+    const [loading, setLoading] = useState(true)
     const params = useParams()
 
     useEffect( () => {
         const fetchEvents = async () => {
             try{
+                // connect to the events collection of the database
                 const eventsRef = collection(db, 'events')
-
+                
+                // make the query to the firebase
                 const q = query(eventsRef)
 
+                // the firebase returns a 'snapshot' in response to the query
+                // save this
                 const querySnap = await getDocs(q)
 
                 const events = []
 
+                // Save the data from firebase to an array with the proper fields
+                // essentially converting from a snapshot to an array
                 querySnap.forEach((doc) => {
-                    console.log(doc.id, ' => ', doc.data())
                     return events.push({
-                        id: doc.id,
-                        data: new Event(doc.data().title, doc.data().course, doc.data().start.toDate(), doc.data().end.toDate(), doc.data().complete, doc.data().graded, doc.data().grade)
+                        title: doc.data().title,
+                        course: doc.data().course,
+                        start: doc.data().start.toDate(),
+                        end: doc.data().end.toDate(),
+                        complete: doc.data().complete,
+                        graded: doc.data().graded,
+                        grade: doc.data().grade
                     })
                 })
-
+                
+                // set the events
                 setEvents(events)
+
+                // not relevant yet
                 setLoading(false)
             }
             catch (error){
@@ -74,31 +89,35 @@ function FirebaseEvents() {
         fetchEvents()
     }, [])
 
-    return (
-        <>
-            <div className="pageLayout">
-                <div className="container">
-                    <div className="row align-items-center my-5">
-                        <div className="col-lg-10">
-                            <h1 className="font-weight-light">FirebaseEvents</h1>
-                            {loading ? (
-                                <h2>Loading...</h2>
-                            ) : events && events.length > 0 ? (
-                                <>
-                                    {events.map( function( event ){ 
-                                        return <li>{JSON.stringify(event)}</li>; 
-                                    })}
-                                </>
-                            ) : (
-                                <p>No events</p>
-                            )
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-	);
+    return events
+
+    // JSX return
+
+    // return (
+    //     <>
+    //         <div className="pageLayout">
+    //             <div className="container">
+    //                 <div className="row align-items-center my-5">
+    //                     <div className="col-lg-10">
+    //                         <h1 className="font-weight-light">FirebaseEvents</h1>
+    //                         {loading ? (
+    //                             <h2>Loading...</h2>
+    //                         ) : events && events.length > 0 ? (
+    //                             <>
+    //                                 {events.map( function( event ){ 
+    //                                     return <li>{JSON.stringify(event)}</li>; 
+    //                                 })}
+    //                             </>
+    //                         ) : (
+    //                             <p>No events</p>
+    //                         )
+    //                         }
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </>
+	// );
 }
 
 export default FirebaseEvents

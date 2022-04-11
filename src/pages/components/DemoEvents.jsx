@@ -24,15 +24,6 @@ const DemoEvents = [
         graded: false,
         grade: 0.00
 
-    },
-    {
-        title: "zyBooks(10.1-10.3)",
-        start: new Date(2022,3,7),
-        end: new Date(2022,3,7),
-        course: "EGR325",
-        complete: true,
-        graded: true,
-        grade: 100.00
     }
 ]
 

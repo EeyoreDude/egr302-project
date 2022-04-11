@@ -12,6 +12,13 @@ import Button from "./shared/Button";
  */
 
 function CalendarPage({ events, handleAdd }) {
+
+    // Check the events array that got passed into CalendarPage from App.js
+    // in the console
+    console.log('Within Calendar:')
+    console.log(events)
+
+    
 	//calendar stuff
 	const localizer = momentLocalizer(moment);
 
