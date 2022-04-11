@@ -1,6 +1,7 @@
 import React from "react";
 import {getAuth} from "firebase/auth"
 import {useEffect, useState} from "react"
+import {Link } from "react-router-dom"
 
 export default function Home() {
 
@@ -20,6 +21,9 @@ export default function Home() {
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Home</h1>
                             <p>Welcome, {user ? user.displayName : 'please sign in or register to use most features'}!</p>
+                            <Link to="/firebase-events-test" className="h6 mt-2 font-weight-light">
+                                FirebaseEvents
+                            </Link>
                         </div>
                     </div>
                 </div>
