@@ -4,6 +4,40 @@ import { db } from '../../firebase.config'
 import {toast} from 'react-toastify'
 import { useParams } from "react-router"
 
+class Event {
+    constructor(title, course, start, end, complete, graded, grade){
+        this.title = title;
+        this.course = course;
+        this.start = start;
+        this.end = end;
+        this.complete = complete;
+        this.graded = graded;
+        this.grade = grade;
+    }
+
+    toString(){
+        return this.name + ' is due at ' + this.end;
+    }
+}
+
+const eventConverter = {
+    toFirestore: (event) => {
+        return {
+            title: event.title,
+            course: event.course,
+            start: event.start.getMilliseconds(),
+            end: event.end.getMilliseconds(),
+            complete: event.complete,
+            graded: event.graded,
+            grad: event.grade
+        };
+    },
+    fromFirestore: (snapshot) => {
+        const data = snapshot.data();
+        return new Event(data.title, data.course, data.start.toDate(), data.end.toDate(), data.complete, data.graded, data.grade);
+    }
+}
+
 function FirebaseEvents() {
     const [events, setEvents] = useState()
     const [loading, setLoading] = useState(true)
@@ -25,7 +59,7 @@ function FirebaseEvents() {
                     console.log(doc.id, ' => ', doc.data())
                     return events.push({
                         id: doc.id,
-                        data: doc.data()
+                        data: new Event(doc.data().title, doc.data().course, doc.data().start.toDate(), doc.data().end.toDate(), doc.data().complete, doc.data().graded, doc.data().grade)
                     })
                 })
 
@@ -40,7 +74,6 @@ function FirebaseEvents() {
         fetchEvents()
     }, [])
 
-
     return (
         <>
             <div className="pageLayout">
@@ -52,16 +85,9 @@ function FirebaseEvents() {
                                 <h2>Loading...</h2>
                             ) : events && events.length > 0 ? (
                                 <>
-                                    <ul >
-                                        {events.map((event) => (
-                                            <h5 key={event.id}>
-                                                {event.data.title}
-                                                <ul className="h6 small">
-                                                    <li>Due: {event.data.start.toDate().toLocaleDateString()} at {event.data.start.toDate().toLocaleTimeString()}</li>
-                                                </ul>
-                                            </h5>
-                                        ))}
-                                    </ul>
+                                    {events.map( function( event ){ 
+                                        return <li>{JSON.stringify(event)}</li>; 
+                                    })}
                                 </>
                             ) : (
                                 <p>No events</p>
