@@ -5,6 +5,8 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
 import Button from "./shared/Button";
 
+import FirebaseEvents from './components/FirebaseEvents';
+
 /**
  * takes in a list of "events" to display events on calendar
  * the events are currently coming from a file being imported into App.js and passed into this function as a param
@@ -13,12 +15,13 @@ import Button from "./shared/Button";
 
 function CalendarPage({ events, handleAdd }) {
 
-    // Check the events array that got passed into CalendarPage from App.js
-    // in the console
-    console.log('Within Calendar:')
-    console.log(events)
+	const getEvents = FirebaseEvents();
 
-    
+	// Check the events array that got passed into CalendarPage from App.js
+	// in the console
+	console.log('Within Calendar:')
+	console.log(events)
+
 	//calendar stuff
 	const localizer = momentLocalizer(moment);
 
@@ -103,7 +106,7 @@ function CalendarPage({ events, handleAdd }) {
 									localizer={localizer}
 									defaultView="month"
 									views={["month", "week"]}
-									events={events}
+									events={getEvents}
 								/>
 							</div>
 						</div>

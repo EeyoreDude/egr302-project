@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import {collection, getDocs, query, where, orderBy, limit, startAfter} from 'firebase/firestore'
-import { db } from '../../firebase.config'
-import {toast} from 'react-toastify'
+import { collection, getDocs, query, where, orderBy, limit, startAfter } from 'firebase/firestore'
+import { toast } from 'react-toastify'
 import { useParams } from "react-router"
+import {db} from "../../firebase.config"
 
 // class Event {
 //     constructor(title, course, start, end, complete, graded, grade){
@@ -38,7 +38,8 @@ import { useParams } from "react-router"
 //     }
 // }
 
-function FirebaseEvents() {
+
+const FirebaseEvents = () => {
     // create the events variable
     const [events, setEvents] = useState()
 
@@ -46,12 +47,12 @@ function FirebaseEvents() {
     const [loading, setLoading] = useState(true)
     const params = useParams()
 
-    useEffect( () => {
+    useEffect(() => {
         const fetchEvents = async () => {
-            try{
+            try {
                 // connect to the events collection of the database
                 const eventsRef = collection(db, 'events')
-                
+
                 // make the query to the firebase
                 const q = query(eventsRef)
 
@@ -74,14 +75,15 @@ function FirebaseEvents() {
                         grade: doc.data().grade
                     })
                 })
-                
+
                 // set the events
                 setEvents(events)
 
                 // not relevant yet
                 setLoading(false)
+
             }
-            catch (error){
+            catch (error) {
                 toast.error('Could not fetch events')
             }
         }
@@ -90,34 +92,6 @@ function FirebaseEvents() {
     }, [])
 
     return events
-
-    // JSX return
-
-    // return (
-    //     <>
-    //         <div className="pageLayout">
-    //             <div className="container">
-    //                 <div className="row align-items-center my-5">
-    //                     <div className="col-lg-10">
-    //                         <h1 className="font-weight-light">FirebaseEvents</h1>
-    //                         {loading ? (
-    //                             <h2>Loading...</h2>
-    //                         ) : events && events.length > 0 ? (
-    //                             <>
-    //                                 {events.map( function( event ){ 
-    //                                     return <li>{JSON.stringify(event)}</li>; 
-    //                                 })}
-    //                             </>
-    //                         ) : (
-    //                             <p>No events</p>
-    //                         )
-    //                         }
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </>
-	// );
 }
 
 export default FirebaseEvents
