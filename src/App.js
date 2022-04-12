@@ -22,19 +22,9 @@ import { useState } from "react";
 import {db} from "./firebase.config"
 
 function App() {
-	// check the hardcoded values in the console
-	console.log("Local:");
-	console.log(DemoEvents);
-
-	// assign the return from FirebaseEvents (the array)
-	// to a variable that can be passed into CalendarPage
-	const getEvents = FirebaseEvents();
-	// check the values pulled from Firebase in the console
-	console.log("Firebase:");
-	console.log(getEvents);
 
 	// Send events to the calendar
-	const [calendarEvents, setEvents] = useState(DemoEvents); // <--- change this to 'getEvents' to theoretically switch to the firebase
+	const [calendarEvents, setEvents] = useState(FirebaseEvents()); // <--- change this to 'getEvents' to theoretically switch to the firebase
 	const addEvent = (newEvent) => {
 		setEvents([newEvent, ...calendarEvents]);
 	};
@@ -49,13 +39,13 @@ function App() {
 						<Route
 							path="/calendar"
 							element={
-								<CalendarPage events={calendarEvents} handleAdd={addEvent} />
+								<CalendarPage events={FirebaseEvents()} handleAdd={addEvent} />
 							}
 						/>
 						<Route path="/grades" element={<Grades />} />
 						<Route
 							path="/activity-stream"
-							element={<ActivityStream events={calendarEvents} />}
+							element={<ActivityStream events={FirebaseEvents()} />}
 						/>
 
 						<Route path="/assignment" element={<Assignment />} />

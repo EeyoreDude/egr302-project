@@ -9,9 +9,9 @@ const navigate = useNavigate()
 
     return (
         <div className="m-4 streamCard streamText" onClick={() => navigate('/assignment')}>
-        <p className="small float-right font-weight-light">due at 11:59 pm</p>
+        <p className="small float-right font-weight-light">due at {event.end.toLocaleTimeString()}</p>
         <h6>{event.title}</h6>
-        <p className="m-2 small w-100">Write an essay about something you don't care about.</p>
+        <p className="m-2 small w-100">{event.course}</p>
         </div>
     )
 }

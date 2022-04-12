@@ -1,9 +1,11 @@
 
 
 import StreamCard from "./StreamCard"
+import FirebaseEvents from './FirebaseEvents';
 
 
 function Stream({eventList}) {
+
     
     const pastDue =  eventList.filter((item) => item.start.getDate() <  new Date().getDate() &&
                                                 item.start.getMonth() <=  new Date().getMonth() &&
@@ -20,19 +22,19 @@ function Stream({eventList}) {
     //TODO: implement key for event map
 return (
     <div className="col-lg-10">
-                            <h1 className="font-weight-light">Stream</h1>
-                            <h4 className="font-weight-light">Today</h4>
-                               {today.map((item)=>(
-                                   <StreamCard event = {item}/>
-                                   ))}
-                            <h4 className="font-weight-light">Upcoming</h4>
-                                {upcoming.map((item)=>(
-                                    <StreamCard event = {item}/>
-                                    ))}
-                            <h4 className="font-weight-light">Past Due</h4>
-                                {pastDue.map((item)=>(
-                                <StreamCard event = {item}/>
-                                ))}
+        <h1 className="font-weight-light">Stream</h1>
+        <h4 className="font-weight-light">Today</h4>
+            {today.map((item)=>(
+                <StreamCard event = {item}/>
+            ))}
+        <h4 className="font-weight-light">Upcoming</h4>
+            {upcoming.map((item)=>(
+                <StreamCard event = {item}/>
+            ))}
+        <h4 className="font-weight-light">Past Due</h4>
+            {pastDue.map((item)=>(
+                <StreamCard event = {item}/>
+            ))}
      </div>
 )
 }

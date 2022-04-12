@@ -20,7 +20,7 @@ import {db} from "../../firebase.config"
 //     }
 // }
 
-// const eventConverter = {
+// const eventConverter = { 
 //     toFirestore: (event) => {
 //         return {
 //             title: event.title,
@@ -91,7 +91,11 @@ const FirebaseEvents = () => {
         fetchEvents()
     }, [])
 
+	console.log('From Query:')
+    console.log(events)
+
     return events
+    
 }
 
 export default FirebaseEvents

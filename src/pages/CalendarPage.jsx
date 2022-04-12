@@ -15,8 +15,6 @@ import FirebaseEvents from './components/FirebaseEvents';
 
 function CalendarPage({ events, handleAdd }) {
 
-	const getEvents = FirebaseEvents();
-
 	// Check the events array that got passed into CalendarPage from App.js
 	// in the console
 	console.log('Within Calendar:')
@@ -106,7 +104,7 @@ function CalendarPage({ events, handleAdd }) {
 									localizer={localizer}
 									defaultView="month"
 									views={["month", "week"]}
-									events={getEvents}
+									events={events}
 								/>
 							</div>
 						</div>

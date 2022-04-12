@@ -1,8 +1,12 @@
+import { Navigate } from "react-router-dom";
 import Stream from "./components/Stream"
 
 
 function ActivityStream({events}){
     
+    if(true){
+        <Navigate to='/' />
+    }
 
     return (
         <>
