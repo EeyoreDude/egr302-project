@@ -24,6 +24,7 @@ import { db } from "./firebase.config";
 
 function App() {
 	// Send events to the calendar
+	const [events, setEvents] = useState(FirebaseEvents)
 	const addEvent = (newEvent) => {
 		// setEvents([newEvent, ...events]);
 	};
@@ -38,14 +39,14 @@ function App() {
 						<Route
 							path="/calendar"
 							element={
-								<CalendarPage events={FirebaseEvents} handleAdd={addEvent} />
+								<CalendarPage events={events} handleAdd={addEvent} />
 							}
 						/>
 						<Route path="/calendar/add-event" element={<AddEvent />} />
 						<Route path="/grades" element={<Grades />} />
 						<Route
 							path="/activity-stream"
-							element={<ActivityStream events={FirebaseEvents} />}
+							element={<ActivityStream events={events} />}
 						/>
 
 						<Route
