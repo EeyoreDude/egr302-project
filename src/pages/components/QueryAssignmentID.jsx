@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react"
-import { collection, getDocs, query, where, orderBy, limit, startAfter } from 'firebase/firestore'
+import { collection, getDocs, query, where} from 'firebase/firestore'
 import { toast } from 'react-toastify'
-import { useParams } from "react-router"
-import {db} from "../../firebase.config"
+import { db } from "../../firebase.config"
 
-const FirebaseEvents = () => {
-    // create the events variable
-    const [events, setEvents] = useState()
+const QueryAssignmentID = (id) => {
 
-    // not relevant yet
-    const [loading, setLoading] = useState(true)
-    const params = useParams()
+    console.log(id)
+
+    const [assignment, setAssignment] = useState()
 
     useEffect(() => {
         const fetchEvents = async () => {
             try {
                 // connect to the events collection of the database
-                const eventsRef = collection(db, 'events')
+                const eventsRef = collection(db, 'events', id)
 
                 // make the query to the firebase
                 const q = query(eventsRef)
@@ -43,11 +40,7 @@ const FirebaseEvents = () => {
                 })
 
                 // set the events
-                setEvents(events)
-
-                // not relevant yet
-                setLoading(false)
-
+                setAssignment(assignment)
             }
             catch (error) {
                 toast.error('Could not fetch events')
@@ -55,13 +48,10 @@ const FirebaseEvents = () => {
         }
 
         fetchEvents()
-    }, [])
+    },[])
 
-	console.log('From Query:')
-    console.log(events)
-
-    return events
-    
+    console.log(assignment)
+    return assignment;
 }
 
-export default FirebaseEvents
+export default QueryAssignmentID;

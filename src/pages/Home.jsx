@@ -1,15 +1,23 @@
 import React from "react";
 import {getAuth} from "firebase/auth"
-import {useEffect, useState} from "react"
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 
 export default function Home() {
 
 	const [user,setUser] = useState({})
 	
 	const auth = getAuth()
+    const navigate = useNavigate()
 
 	useEffect(() => {
-		setUser(auth.currentUser)
+        if(auth.currentUser === null){
+            navigate('/profile')
+            toast.error("Please sign in to use the site's features")
+        } else {
+    		setUser(auth.currentUser)
+        }
 	}, [auth.currentUser])
 
 	return (

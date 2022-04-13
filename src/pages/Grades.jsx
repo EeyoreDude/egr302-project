@@ -1,7 +1,23 @@
 import {Link } from "react-router-dom"
+import {getAuth} from "firebase/auth"
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
+
+import CourseGrades from "./components/CourseGrades"
 
 function Grades(){
-    
+
+    const auth = getAuth()
+    const navigate = useNavigate()
+
+	useEffect(() => {
+        if(auth.currentUser === null){
+            navigate('/profile')
+            toast.error("Please sign in to use the site's features")
+        }
+	}, [auth.currentUser])
+
     return (
         <>
             <div className="pageLayout">
@@ -10,9 +26,7 @@ function Grades(){
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Grades</h1>
                             <p>
-                                <Link to="/course-grades" className="h6 mt-2 font-weight-light">
-									Course Grades Page
-								</Link>
+                                {/* <CourseGrades /> */}
                             </p>
                         </div>
                     </div>

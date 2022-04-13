@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {
 	ActivityStream,
 	CalendarPage,
+	AddEvent,
 	Grades,
 	Home,
 	Navbar,
@@ -42,15 +43,17 @@ function App() {
 								<CalendarPage events={FirebaseEvents()} handleAdd={addEvent} />
 							}
 						/>
+						<Route path="/calendar/add-event" element={<AddEvent />} />
 						<Route path="/grades" element={<Grades />} />
 						<Route
 							path="/activity-stream"
 							element={<ActivityStream events={FirebaseEvents()} />}
 						/>
 
-						<Route path="/assignment" element={<Assignment />} />
-						<Route path="/graded-assignment" element={<GradedAssignment />} />
-						<Route path="/course-grades" element={<CourseGrades />} />
+						<Route path="/course/:courseName/:assignmentID" element={<Assignment />} />
+
+						<Route path="/grades/:courseName/:assignmentID" element={<GradedAssignment />} />
+						<Route path="/grades/:courseName" element={<CourseGrades />} />
 
 						<Route path="/profile" element={<PrivateRoute />}>
 							<Route path="/profile" element={<Profile />} />
