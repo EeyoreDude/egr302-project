@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import moment from "moment";
+import { ReactComponent as PlusIcon } from '../assets/svg/plusIcon.svg'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import AddEvent from "./AddEvent";
 import Button from "./shared/Button";
@@ -55,8 +56,8 @@ function CalendarPage({ events, handleAdd }) {
 							</div>
 						</div>
 						<Link to="add-event">
-							<button type="submit" disabled={false} className="btn-1 btnDark">
-								+
+							<button type="submit" disabled={false} className="btn-1 btnDark btnSquare p-3">
+								<PlusIcon fill="#aaaaaa" width='24px' height='24px'/>
 							</button>
 						</Link>
 					</div>

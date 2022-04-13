@@ -21,10 +21,10 @@ function AddEvent(handleAdd) {
     const isMounted = useRef(true)
 
     useEffect(() => {
-        if(isMounted){
+        if (isMounted) {
             onAuthStateChanged(auth, (user) => {
-                if(user) {
-                    setFormData({...formData, userRef: user.uid})
+                if (user) {
+                    setFormData({ ...formData, userRef: user.uid })
                 } else {
                     navigate('/sign-in')
                 }
@@ -81,28 +81,16 @@ function AddEvent(handleAdd) {
     };
 
     const onSubmit = (e) => {
-        
+
     }
 
     const addDateForm = (
         <form onSubmit={addEventHandler}>
-            <br></br>
-            Event Name:
-            <br></br>
-            <input
-                onChange={handleTitle}
-                value={title}
-                placeholder="Add Event Name"
-                type="text"
-            />
-            <br></br>
-            <br></br>
-            Event Date:
-            <br></br>
-            <input type="date" onChange={handleDate} />
-            <br></br>
-            <br></br>
-            <Button isDisabled={title === "" || date === null} type="submit">
+            <p className="h5 m-0 mb-2">Event Name:</p>
+            <input className="input-text-100" onChange={handleTitle} value={title} placeholder="Add Event Name" type="text" />
+            <p className="h5 m-0 mb-2">Event Date:</p>
+            <input className="input-text-100 mb-4" type="date" onChange={handleDate} />
+            <Button version="btn-1 btnDark" isDisabled={title === "" || date === null} type="submit">
                 {" "}
                 Add Event{" "}
             </Button>
@@ -110,12 +98,20 @@ function AddEvent(handleAdd) {
     );
 
     return (
-        <div className="">
-            <div className="eventFormCard">
-                <button onClick={showAddEventForm}>Create New Event</button>
-                {addingDate && addDateForm}
+        <>
+            <div className="pageLayout">
+                <div className="container">
+                    <div className="row align-items-center my-5">
+                        <div className="col-lg-10">
+                            <h1 className="font-weight-light">Create New Event</h1>
+                            <div className="eventFormCard ml-4">
+                                {addDateForm}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

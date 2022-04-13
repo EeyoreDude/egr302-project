@@ -2,6 +2,27 @@
 	EGR302 SPECIALLY ADDED STYLES
 **/
 
+.fs-12 {
+	font-size: 1pt;
+}
+.fs-14 {
+	font-size: 14pt;
+}
+.fs-16 {
+	font-size: 16pt;
+}
+.fs-20 {
+	font-size: 20pt;
+}
+.fs-24 {
+	font-size: 24pt;
+}
+
+.btnSquare {
+	aspect-ratio: 1;
+	width: fit-content;
+}
+
 .calendarContainer{
 	height: 100%;
 	width: 100%;
@@ -97,7 +118,7 @@
 }
 
 .navbarListItem:hover{
-	background-color: #333333;
+	background-color: #353535;
 }
 
 
@@ -133,10 +154,17 @@
 }
 
 .btnDark:hover {
-	color: #aaaaaa;
-	background-color: #3c3c3c;
-	border-color: #3c3c3c
+	color: #bebebe;
+	background-color: #353535;
+	border-color: #353535
 }
+
+.btnDark:disabled {
+	color: #aaaaaa;
+	background-color: #444444;
+	border-color: #444444
+}
+
 
 .btnDark {
 	color: #aaaaaa;
@@ -155,12 +183,11 @@
 
 .eventFormCard {
 	background-color: #ebebeb;
-	margin: auto;
-	margin-top: 100%;
+	margin-top: 1rem;
 	border-radius: 0.25rem;
 	padding: 1rem;
 	box-shadow: rgba(0, 0, 0, 0.2);
-	width: 250px;
+	width: fit-content;
 	height: fit-content;
 }
 
