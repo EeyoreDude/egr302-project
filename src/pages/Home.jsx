@@ -1,8 +1,13 @@
-import React from "react";
+import React from "react"
 import {getAuth} from "firebase/auth"
 import {useEffect, useState} from "react"
+import CourseDisplay from "./components/CourseDisplay";
 
-export default function Home() {
+export default function Home({events}) {
+
+    const upcoming = events.filter((item) => item.start.getDate() >  new Date().getDate() &&
+                                                item.start.getMonth() >=  new Date().getMonth() &&
+                                                item.start.getFullYear() ===  new Date().getFullYear())
 
 	const [user,setUser] = useState({})
 	
@@ -18,8 +23,14 @@ export default function Home() {
                 <div className="container">
                     <div className="row align-items-center my-5">
                         <div className="col-lg-10">
-                            <h1 className="font-weight-light">Home</h1>
-                            <p>Welcome, {user ? user.displayName : 'please sign in or register to use most features'}!</p>
+                            <h1 className="font-weight-light">{user ? user.displayName : 'please sign in or register to use most features'}'s Courses</h1>
+                            <CourseDisplay/>
+                            <div>
+                                <h1>Upcoming</h1>
+                                {upcoming.map((item)=>(
+                                <p>{item.title}</p>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

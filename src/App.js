@@ -36,7 +36,7 @@ const addEvent = (newEvent) => {
 				<Navbar />
 				<div className="centralContainer">
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home events = {calendarEvents}/>} />
 					<Route path="/calendar" element={<CalendarPage events = {calendarEvents} handleAdd = {addEvent} />} />
 					<Route path="/grades" element={<Grades />} />
 					<Route path="/activity-stream" element={<ActivityStream events = {calendarEvents} />} />
