@@ -1,4 +1,4 @@
-import {getAuth} from "firebase/auth"
+import {getAuth, onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
@@ -10,10 +10,12 @@ function ActivityStream({events}){
     const auth = getAuth()
     const navigate = useNavigate()
 
+    const [eventList, setEventList] = useState(events);
+
 	useEffect(() => {
         if(auth.currentUser === null){
             navigate('/profile')
-            toast.error("Please sign in to use the site's features")
+            toast.error("Please sign in.")
         }
 	}, [auth.currentUser])
 
@@ -24,7 +26,7 @@ function ActivityStream({events}){
                     <div className="row align-items-center my-5">
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Stream</h1>
-                            <Stream eventList = {events}/>
+                            <Stream eventList = {eventList}/>
                         </div>
                     </div>
                 </div>

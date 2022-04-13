@@ -9,17 +9,18 @@ import CourseGrades from "./components/CourseGrades"
 function Grades(){
 
     const auth = getAuth()
+    
     const navigate = useNavigate()
 
 	useEffect(() => {
         if(auth.currentUser === null){
             navigate('/profile')
-            toast.error("Please sign in to use the site's features")
+            toast.error("Please sign in.")
         }
 	}, [auth.currentUser])
 
     return (
-        <>
+        <> 
             <div className="pageLayout">
                 <div className="container">
                     <div className="row align-items-center my-5">

@@ -14,7 +14,7 @@ export default function Home() {
 	useEffect(() => {
         if(auth.currentUser === null){
             navigate('/profile')
-            toast.error("Please sign in to use the site's features")
+            toast.error("Please sign in.")
         } else {
     		setUser(auth.currentUser)
         }

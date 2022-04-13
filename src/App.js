@@ -20,14 +20,12 @@ import PrivateRoute from "./pages/components/PrivateRoute";
 import DemoEvents from "./pages/components/DemoEvents";
 import FirebaseEvents from "./pages/components/FirebaseEvents";
 import { useState } from "react";
-import {db} from "./firebase.config"
+import { db } from "./firebase.config";
 
 function App() {
-
 	// Send events to the calendar
-	const [calendarEvents, setEvents] = useState(FirebaseEvents()); // <--- change this to 'getEvents' to theoretically switch to the firebase
 	const addEvent = (newEvent) => {
-		setEvents([newEvent, ...calendarEvents]);
+		// setEvents([newEvent, ...events]);
 	};
 
 	return (
@@ -40,19 +38,25 @@ function App() {
 						<Route
 							path="/calendar"
 							element={
-								<CalendarPage events={FirebaseEvents()} handleAdd={addEvent} />
+								<CalendarPage events={FirebaseEvents} handleAdd={addEvent} />
 							}
 						/>
 						<Route path="/calendar/add-event" element={<AddEvent />} />
 						<Route path="/grades" element={<Grades />} />
 						<Route
 							path="/activity-stream"
-							element={<ActivityStream events={FirebaseEvents()} />}
+							element={<ActivityStream events={FirebaseEvents} />}
 						/>
 
-						<Route path="/course/:courseName/:assignmentID" element={<Assignment />} />
+						<Route
+							path="/course/:courseName/:assignmentID"
+							element={<Assignment />}
+						/>
 
-						<Route path="/grades/:courseName/:assignmentID" element={<GradedAssignment />} />
+						<Route
+							path="/grades/:courseName/:assignmentID"
+							element={<GradedAssignment />}
+						/>
 						<Route path="/grades/:courseName" element={<CourseGrades />} />
 
 						<Route path="/profile" element={<PrivateRoute />}>

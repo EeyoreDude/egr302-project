@@ -1,57 +1,38 @@
 import { useEffect, useState } from "react"
+import { doc, getDoc } from "firebase/firestore";
 import { collection, getDocs, query, where} from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import { db } from "../../firebase.config"
 
-const QueryAssignmentID = (id) => {
+function QueryAssignmentID(id) {
 
-    console.log(id)
+    useEffect ( () => {
+        const fetch = async () => {
+            const docRef = doc(db, "events", id);
+            const docSnap = await getDoc(docRef);
 
-    const [assignment, setAssignment] = useState()
-
-    useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                // connect to the events collection of the database
-                const eventsRef = collection(db, 'events', id)
-
-                // make the query to the firebase
-                const q = query(eventsRef)
-
-                // the firebase returns a 'snapshot' in response to the query
-                // save this
-                const querySnap = await getDocs(q)
-
-                const events = []
-
-                // Save the data from firebase to an array with the proper fields
-                // essentially converting from a snapshot to an array
-                querySnap.forEach((doc) => {
-                    return events.push({
-                        title: doc.data().title,
-                        course: doc.data().course,
-                        start: doc.data().start.toDate(),
-                        end: doc.data().end.toDate(),
-                        complete: doc.data().complete,
-                        graded: doc.data().graded,
-                        grade: doc.data().grade,
-                        id: doc.id
-                    })
-                })
-
-                // set the events
-                setAssignment(assignment)
-            }
-            catch (error) {
-                toast.error('Could not fetch events')
+            if (docSnap.exists()) {
+                const ass = {
+                    title: docSnap.data().title,
+                    course: docSnap.data().course,
+                    start: docSnap.data().start.toDate(),
+                    end: docSnap.data().end.toDate(),
+                    complete: docSnap.data().complete,
+                    graded: docSnap.data().graded,
+                    grade: docSnap.data().grade,
+                    id: doc.id
+                }
+                console.log("QueryAssignmentID:")
+                console.log(ass)
+                return ass
+            } else {
+            // doc.data() will be undefined in this case
+                console.log("No such document!");
             }
         }
 
-        fetchEvents()
-    },[])
-
-    console.log(assignment)
-    return assignment;
+        fetch()
+    }, [id])
 }
 
 export default QueryAssignmentID;
