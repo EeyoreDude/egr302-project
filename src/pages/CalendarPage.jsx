@@ -26,7 +26,7 @@ function CalendarPage({ events, handleAdd }) {
 
 	const handleDate = (e) => {
 		const temp = new Date(e.target.value);
-		updateDate(temp.setDate(temp.getDate() + 1));
+		updateDate(new Date(temp.setDate(temp.getDate() + 1)));
 
 		//const newDateString = e.target.value
 

@@ -26,9 +26,10 @@ export default function Home({events}) {
                             <h1 className="font-weight-light">{user ? user.displayName : 'please sign in or register to use most features'}'s Courses</h1>
                             <CourseDisplay/>
                             <div>
-                                <h1>Upcoming</h1>
+                                <h1 className="font-weight-light">Upcoming</h1>
+                                <br></br>
                                 {upcoming.map((item)=>(
-                                <p>{item.title}</p>
+                                <p className="streamText">- {item.title}</p>
                                 ))}
                             </div>
                         </div>
