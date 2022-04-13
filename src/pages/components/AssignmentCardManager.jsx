@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
 
-function AssignmentCardManager({ assignments }) { 
+function AssignmentCardManager({ assignments }) {
 
     const [assignmentList, setAssignments] = useState(assignments); 
  

@@ -5,6 +5,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { useNavigate } from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import DatePicker from 'react-date-picker';
+import { toast } from "react-toastify";
 
 function AddEvent(handleAdd) {
     const [startDate, setStartDate] = useState(null)
@@ -14,14 +15,12 @@ function AddEvent(handleAdd) {
         title: "title",
         description: "",
         course: "course",
-        start: startDate,
-        end: endDate,
         complete: false,
         graded: false,
         grade: 0
     })
 
-    const { title, description, course, start, end, complete, graded, grade } = formData
+    const { title, description, course, complete, graded, grade } = formData
 
     const auth = getAuth()
     const navigate = useNavigate()
@@ -45,26 +44,22 @@ function AddEvent(handleAdd) {
     const onChange = (e) => {
         setFormData((prevState) => ({
             ...prevState,
-            [e.target.id]: e.target.value,
-            start: startDate,
-            end: endDate
+            [e.target.id]: e.target.value
         }));
     }
 
-    function handleStartDate(e) {
-        setStartDate(new Date(e.target.valueAsDate.setDate(e.target.valueAsDate.getDate() + 1)));
-        onChange(e);
-    }
-
-    function handleEndDate(e) {
-        setEndDate(new Date(e.target.valueAsDate.setDate(e.target.valueAsDate.getDate() + 1)));
-        onChange(e);
-    }
-
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(formData)
+        const formDataCopy = {
+            ...formData,
+            start: startDate,
+            end: endDate
+        }
+
+        const docRef = await addDoc(collection(db, 'events'), formDataCopy)
+        toast.success("Added Event!")
+        navigate('/calendar')
     }
 
     return (
@@ -77,12 +72,16 @@ function AddEvent(handleAdd) {
                             <div className="eventFormCard ml-4">
                                 <form onSubmit={onSubmit}>
                                     <p className="h5 m-0 mb-2">Event Name:</p>
-                                    <input className="input-text-100" onChange={onChange} id="title" placeholder="Add Event Name" type="text" />
+                                    <input className="input-text-100" onChange={onChange} id="title" placeholder="Name" type="text" />
+                                    <p className="h5 m-0 mb-2">Event Description:</p>
+                                    <textarea className="input-text-100" onChange={onChange} id="description" placeholder="A description of the event" />
+                                    <p className="h5 m-0 mb-2">Event Name:</p>
+                                    <input className="input-text-100" onChange={onChange} id="course" placeholder="Course" type="text" />
                                     <p className="h5 m-0 mb-2">Event Start:</p>
-                                    <input className="input-text-100 mb-4" id="start" type="date" onChange={(e) => { handleStartDate(e); }} />
+                                    <input className="input-text-100 mb-4" id="start" type="date" onChange={(e) => { setStartDate(new Date(e.target.valueAsDate.setDate(e.target.valueAsDate.getDate() + 1))) }} />
                                     <p className="h5 m-0 mb-2">Event End:</p>
-                                    <input className="input-text-100 mb-4" id="end" type="date" onChange={(e) => { handleEndDate(e) }} />
-                                    <Button version="btn-1 btnDark" isDisabled={title === "" || start === null} type="submit">
+                                    <input className="input-text-100 mb-4" id="end" type="date" onChange={(e) => { setEndDate(new Date(e.target.valueAsDate.setDate(e.target.valueAsDate.getDate() + 1))) }} />
+                                    <Button version="btn-1 btnDark" isDisabled={title === "" || startDate === null || endDate === null} type="submit">
                                         {" "}
                                         Add Event{" "}
                                     </Button>
