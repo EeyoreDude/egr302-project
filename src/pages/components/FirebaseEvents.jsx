@@ -23,6 +23,7 @@ const fetchEvents = async () => {
         querySnap.forEach((doc) => {
             return FirebaseEvents.push({
                 title: doc.data().title,
+                description: doc.data().description,
                 course: doc.data().course,
                 start: doc.data().start.toDate(),
                 end: doc.data().end.toDate(),

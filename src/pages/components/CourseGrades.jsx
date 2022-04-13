@@ -1,5 +1,4 @@
 import CourseGradesCard from './CourseGradesCard';
-import FirebaseEvents from './FirebaseEvents';
 
 
 function CourseGrades({}) {
@@ -27,20 +26,20 @@ function CourseGrades({}) {
 
 
     //TODO: implement this filter with the API
-    const current =  courses.filter((item) => item.grade > 80.0)
+    const current = courses.filter((item) => item.semester === "SP2022")
 
-    const past = courses.filter((item) => item.grade <= 80.0)
+    const past = courses.filter((item) => item.semester != "SP2022")
 
     //TODO: implement key for event map
 return (
     <div className="col-lg-10">
         <h4 className="font-weight-light">Current</h4>
             {current.map((item)=>(
-                <CourseGradesCard event = {item}/>
+                <CourseGradesCard key={item.semester + item.code} course = {item}/>
             ))}
         <h4 className="font-weight-light">Past</h4>
             {past.map((item)=>(
-                <CourseGradesCard event = {item}/>
+                <CourseGradesCard key={item.semester + item.code} course = {item}/>
             ))}
      </div>
 )

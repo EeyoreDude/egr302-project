@@ -27,7 +27,7 @@ function Grades(){
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Grades</h1>
                             <p>
-                                {/* <CourseGrades /> */}
+                                <CourseGrades />
                             </p>
                         </div>
                     </div>

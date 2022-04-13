@@ -54,11 +54,12 @@ function App() {
 							element={<Assignment />}
 						/>
 
+						<Route path="/grades/:semester/:courseName" element={<CourseGrades />} />
+						
 						<Route
-							path="/grades/:courseName/:assignmentID"
+							path="/grades/:semester/:courseName/:assignmentID"
 							element={<GradedAssignment />}
 						/>
-						<Route path="/grades/:courseName" element={<CourseGrades />} />
 
 						<Route path="/profile" element={<PrivateRoute />}>
 							<Route path="/profile" element={<Profile />} />

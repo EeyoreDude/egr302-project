@@ -192,7 +192,6 @@
 }
 
 .streamCard {
-	background-color: #ebebeb;
 	border-radius: 0.25rem;
 	padding: 1rem;
 	margin-top: 1rem;
@@ -201,16 +200,36 @@
 	width: 95%;
 }
 
-.streamText {
+.streamCardBgNormal {
+	background-color: #ebebeb;
+}
+
+.streamCardBgOld {
+	background-color: #d8d8d8;
+}
+
+.streamTextNormal {
 	color:#000000
 }
 
-.streamText:hover {
+.streamTextOld {
+	color:#484848
+}
+
+.streamTextNormal:hover {
 	color: #707070
 }
 
-.streamCard:hover{
+.streamTextOld:hover {
+	color: #707070
+}
+
+.streamCardBgNormal:hover{
 	background-color: #f0f0f0;
+}
+
+.streamCardBgOld:hover{
+	background-color: #dddddd;
 }
 
 .profileCard {

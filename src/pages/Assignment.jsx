@@ -30,6 +30,7 @@ function Assignment(){
         // essentially converting from a snapshot to an array
             setEvent({
                 title: querySnap.data().title,
+                description: querySnap.data().description,
                 course: querySnap.data().course,
                 start: querySnap.data().start.toDate(),
                 end: querySnap.data().end.toDate(),
@@ -64,7 +65,7 @@ function Assignment(){
                     <div className="row align-items-center my-5">
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">{event.title}</h1>
-                            <p>...</p>
+                            <p>{event.description}</p>
                         </div>
                     </div>
                 </div>
