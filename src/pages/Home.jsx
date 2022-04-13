@@ -1,6 +1,8 @@
 import React from "react"
 import {getAuth} from "firebase/auth"
-import {useEffect, useState} from "react"
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 import CourseDisplay from "./components/CourseDisplay";
 
 export default function Home({events}) {
@@ -12,10 +14,16 @@ export default function Home({events}) {
 	const [user,setUser] = useState({})
 	
 	const auth = getAuth()
+    const navigate = useNavigate()
 
 	useEffect(() => {
-		setUser(auth.currentUser)
-	}, [])
+        if(auth.currentUser === null){
+            navigate('/profile')
+            toast.error("Please sign in.")
+        } else {
+    		setUser(auth.currentUser)
+        }
+	}, [auth.currentUser])
 
 	return (
         <>

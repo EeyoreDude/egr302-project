@@ -1,9 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import {getAuth} from "firebase/auth"
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify";
 import moment from "moment";
+import { ReactComponent as PlusIcon } from '../assets/svg/plusIcon.svg'
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useState } from "react";
+import AddEvent from "./AddEvent";
 import Button from "./shared/Button";
+
 
 /**
  * takes in a list of "events" to display events on calendar
@@ -12,77 +19,20 @@ import Button from "./shared/Button";
  */
 
 function CalendarPage({ events, handleAdd }) {
+
+	const auth = getAuth()
+    const navigate = useNavigate()
+
+	useEffect(() => {
+        if(auth.currentUser === null){
+            navigate('/profile')
+            toast.error("Please sign in.")
+        }
+	}, [auth.currentUser])
+
 	//calendar stuff
 	const localizer = momentLocalizer(moment);
 
-	//new event data state holders
-	const [title, setTitle] = useState("");
-	const [date, updateDate] = useState();
-
-	//new event data handlers
-	const handleTitle = (e) => {
-		setTitle(e.target.value);
-	};
-
-	const handleDate = (e) => {
-		const temp = new Date(e.target.value);
-		updateDate(new Date(temp.setDate(temp.getDate() + 1)));
-
-		//const newDateString = e.target.value
-
-		//const year = +newDateString.substring(0,4)
-		//const day = +newDateString.substring(5,7)
-		//const month = +newDateString.substring(8)
-
-		//updateDate(new Date(year, month, day))
-	};
-
-	const addEventHandler = (e) => {
-		e.preventDefault();
-		const newEvent = {
-			title: title,
-			start: date,
-			end: date,
-		};
-		handleAdd(newEvent);
-
-		setTitle("");
-		//updateDate()
-	};
-
-	//event form stuff
-	const [addingDate, setAddingDate] = useState(false);
-
-	const showAddEventForm = () => {
-		setAddingDate((prev) => {
-			return !prev;
-		});
-	};
-
-	const addDateForm = (
-		<form onSubmit={addEventHandler}>
-			<br></br>
-			Event Name:
-			<br></br>
-			<input
-				onChange={handleTitle}
-				value={title}
-				placeholder="Add Event Name"
-				type="text"
-			/>
-			<br></br>
-			<br></br>
-			Event Date:
-			<br></br>
-			<input type="date" onChange={handleDate} />
-			<br></br>
-			<br></br>
-			<Button isDisabled={title === "" || date === null} type="submit">
-				{" "}
-				Add Event{" "}
-			</Button>
-		</form>
-	);
 
 	return (
 		<>
@@ -100,12 +50,11 @@ function CalendarPage({ events, handleAdd }) {
 								/>
 							</div>
 						</div>
-						<div className="">
-							<div className="eventFormCard">
-								<button onClick={showAddEventForm}>Create New Event</button>
-								{addingDate && addDateForm}
-							</div>
-						</div>
+						<Link to="add-event">
+							<button type="submit" disabled={false} className="btn-1 btnDark btnSquare p-3">
+								<PlusIcon fill="#aaaaaa" width='24px' height='24px'/>
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
