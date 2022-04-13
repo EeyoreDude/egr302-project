@@ -36,6 +36,8 @@ function AddEvent(handleAdd) {
         }
     }, [isMounted])
 
+
+    
     //new event data state holders
     const [title, setTitle] = useState("");
     const [date, updateDate] = useState();
