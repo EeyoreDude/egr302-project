@@ -8,6 +8,8 @@ import { useNavigate } from "react-router";
 
 function Stream({eventList}) {
 
+    const navigate = useNavigate()
+
     const [events, setEvents] = useState(eventList);
 
     const pastDue = events.filter((item) => item.start.getDate() <  new Date().getDate() &&

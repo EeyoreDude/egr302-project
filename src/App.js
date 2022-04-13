@@ -19,12 +19,14 @@ import {
 import PrivateRoute from "./pages/components/PrivateRoute";
 import DemoEvents from "./pages/components/DemoEvents";
 import FirebaseEvents from "./pages/components/FirebaseEvents";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { db } from "./firebase.config";
 
 function App() {
 	// Send events to the calendar
+	const isMounted = useRef(true)
 	const [events, setEvents] = useState(FirebaseEvents)
+
 	const addEvent = (newEvent) => {
 		// setEvents([newEvent, ...events]);
 	};
@@ -50,14 +52,14 @@ function App() {
 						/>
 
 						<Route
-							path="/course/:courseName/:assignmentID"
+							path="/course/:courseCode/:assignmentID"
 							element={<Assignment />}
 						/>
 
-						<Route path="/grades/:semester/:courseName" element={<CourseGrades />} />
+						<Route path="/grades/:semester/:courseCode" element={<CourseGrades />} />
 						
 						<Route
-							path="/grades/:semester/:courseName/:assignmentID"
+							path="/grades/:semester/:courseCode/:assignmentID"
 							element={<GradedAssignment />}
 						/>
 

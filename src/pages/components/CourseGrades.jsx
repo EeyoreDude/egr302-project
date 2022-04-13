@@ -17,6 +17,12 @@ function CourseGrades({}) {
             grade: 81.7
         },
         {
+            code: "EGR326",
+            semester: "SP2022",
+            title: "Software Design and Architecture",
+            grade: 88.1
+        },
+        {
             code: "EGR222",
             semester: "SP2020",
             title: "Software Engineering",

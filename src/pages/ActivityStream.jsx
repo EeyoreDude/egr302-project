@@ -6,18 +6,20 @@ import { toast } from "react-toastify";
 import Stream from './components/Stream'
 
 function ActivityStream({events}){
-
-    const auth = getAuth()
-    const navigate = useNavigate()
-
+    
     const [eventList, setEventList] = useState(events);
 
-	useEffect(() => {
+    const navigate = useNavigate()
+    const auth = getAuth()
+
+    useEffect(() => {
         if(auth.currentUser === null){
             navigate('/profile')
             toast.error("Please sign in.")
         }
-	}, [auth.currentUser])
+    }, [auth.currentUser, eventList])
+
+
 
     return (
         <>
