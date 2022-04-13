@@ -25,6 +25,16 @@ import { db } from "./firebase.config";
 function App() {
 	// Send events to the calendar
 	const isMounted = useRef(true)
+
+	// useEffect(() => {
+    //     if (isMounted) {
+            
+    //     }
+    //     return () => {
+    //         isMounted.current = false
+    //     }
+    // }, [isMounted])
+
 	const [events, setEvents] = useState(FirebaseEvents)
 
 	const addEvent = (newEvent) => {
