@@ -89,9 +89,9 @@ function App() {
 		<>
 			<Router>
 				<Navbar />
-				<div className="centralContainer">
+				<div className="centralContainer"> 
 					<Routes>
-            <Route path="/" element={<Home events = {calendarEvents}/>} />
+            <Route path="/" element={<Home events = {events}/>} />
 						<Route
 							path="/calendar"
 							element={
