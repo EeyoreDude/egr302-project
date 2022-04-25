@@ -1,7 +1,7 @@
 import {GoogleLogin} from 'react-google-login'
 //import {google} from 'googleapis'
 
-function OAuth({Courses, handleSetCourses}){
+function OAuth({Courses, handleSetCourses, handleAddEvent}){
 
     
 
@@ -10,8 +10,15 @@ function OAuth({Courses, handleSetCourses}){
         const resCourse = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
         const dataCourse = await resCourse.json()
 
-        //const resAssign = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
-        //const dataAssign = await resCourse.json()
+        
+        dataCourse.courses.forEach(element => {
+            const resAssign = fetch('https://classroom.googleapis.com/v1/courses/{'+element.id+'}/courseWork',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
+            const dataAssign =  resAssign.json()
+            dataAssign.studentSubmissions.forEach(item => {
+                handleAddEvent(item)
+            })
+        });
+        
 
         handleSetCourses(dataCourse.courses)
         console.log(dataCourse)
