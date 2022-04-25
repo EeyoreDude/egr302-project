@@ -39,7 +39,7 @@ function SignIn({Courses, handleSetCourses}) {
 			)
 
 			if (userCredential.user) {
-				navigate('/')
+				navigate('/profile')
 			}
 
 		} catch (error) {

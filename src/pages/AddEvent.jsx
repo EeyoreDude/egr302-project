@@ -75,7 +75,7 @@ function AddEvent(handleAdd) {
                                     <input className="input-text-100" onChange={onChange} id="title" placeholder="Name" type="text" />
                                     <p className="h5 m-0 mb-2">Event Description:</p>
                                     <textarea className="input-text-100" onChange={onChange} id="description" placeholder="A description of the event" />
-                                    <p className="h5 m-0 mb-2">Event Name:</p>
+                                    <p className="h5 m-0 mb-2">Course:</p>
                                     <input className="input-text-100" onChange={onChange} id="course" placeholder="Course" type="text" />
                                     <p className="h5 m-0 mb-2">Event Start:</p>
                                     <input className="input-text-100 mb-4" id="start" type="date" onChange={(e) => { setStartDate(new Date(e.target.valueAsDate.setDate(e.target.valueAsDate.getDate() + 1))) }} />
