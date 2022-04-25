@@ -10,8 +10,8 @@ function OAuth({Courses, handleSetCourses}){
         const resCourse = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
         const dataCourse = await resCourse.json()
 
-        const resAssign = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
-        const dataAssign = await resCourse.json()
+        //const resAssign = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
+        //const dataAssign = await resCourse.json()
 
         handleSetCourses(dataCourse.courses)
         console.log(dataCourse)
