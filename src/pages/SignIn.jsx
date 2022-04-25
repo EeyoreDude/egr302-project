@@ -97,7 +97,10 @@ function SignIn({Courses, handleSetCourses}) {
 								<Link to="/sign-up" className="h6 mt-2 font-weight-light">
 									Sign Up
 								</Link>
-								<OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
+								<div className="mt-5 h4 font-weight-light">Link your Google Classroom account:</div>
+								<div className="mt-2">
+									<OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
+								</div>
 
 							</main>
 						</div>

@@ -92,7 +92,10 @@ function Profile({Courses, handleSetCourses}) {
                             </main>
 
                             <button className="m-0 btn-1 btnDark" onClick={signOut}>Sign Out</button>
-                            <OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
+                            <div className="mt-5 h4 font-weight-light">Link your Google Classroom account:</div>
+                            <div className="mt-2">
+                                <OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
+                            </div>
                         </div>
                     </div>
                 </div>
