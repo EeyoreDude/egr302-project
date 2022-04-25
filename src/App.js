@@ -87,7 +87,7 @@ function App() {
 	}, [])
 
 	const addEvent = (newEvent) => {
-		// setEvents([newEvent, ...events]);
+		setEvents([newEvent, ...events]);
 	};
 
 	return (
@@ -118,9 +118,9 @@ function App() {
 						<Route path="/grades/:semester/:courseCode" element={<CourseGrades />} />
 						
 						<Route path="/profile" element={<PrivateRoute />}>
-							<Route path="/profile" element={<Profile Courses={Courses} handleSetCourses={generateCourses} />} />
+							<Route path="/profile" element={<Profile Courses={Courses} handleSetCourses={generateCourses} handleAddEvent={addEvent}/>} />
 						</Route>
-						<Route path="/sign-in" element={<SignIn Courses={Courses} handleSetCourses={generateCourses} />} />
+						<Route path="/sign-in" element={<SignIn Courses={Courses} handleSetCourses={generateCourses} handleAddEvent={addEvent} />} />
 						<Route path="/sign-up" element={<SignUp />} />
 						<Route path="/forgot-password" element={<ForgotPassword />} />
 					</Routes>

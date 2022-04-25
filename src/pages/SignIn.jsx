@@ -7,7 +7,7 @@ import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import Button from "./shared/Button";
 import OAuth from "./components/OAuth";
 
-function SignIn({Courses, handleSetCourses}) {
+function SignIn({Courses, handleSetCourses, handleAddEvent}) {
 	const [showPassword, setShowPassword] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
@@ -99,7 +99,7 @@ function SignIn({Courses, handleSetCourses}) {
 								</Link>
 								<div className="mt-5 h4 font-weight-light">Link your Google Classroom account:</div>
 								<div className="mt-2">
-									<OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
+									<OAuth Courses = {Courses} handleSetCourses={handleSetCourses} handleAddEvent={handleAddEvent}/>
 								</div>
 
 							</main>
