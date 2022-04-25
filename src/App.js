@@ -104,7 +104,7 @@ function App() {
 							}
 						/>
 						<Route path="/calendar/add-event" element={<AddEvent />} />
-						<Route path="/grades" element={<Grades />} />
+						<Route path="/grades" element={<Grades Courses={Courses}/>} />
 						<Route
 							path="/activity-stream"
 							element={<ActivityStream events={events} />}
@@ -118,7 +118,7 @@ function App() {
 						<Route path="/grades/:semester/:courseCode" element={<CourseGrades />} />
 						
 						<Route path="/profile" element={<PrivateRoute />}>
-							<Route path="/profile" element={<Profile />} />
+							<Route path="/profile" element={<Profile Courses={Courses} handleSetCourses={generateCourses} />} />
 						</Route>
 						<Route path="/sign-in" element={<SignIn Courses={Courses} handleSetCourses={generateCourses} />} />
 						<Route path="/sign-up" element={<SignUp />} />
