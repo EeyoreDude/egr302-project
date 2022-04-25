@@ -3,10 +3,10 @@ import DemoCourses from "./DemoCourses"
 
 function CourseDisplay({Courses}){
 
-    //const current = Courses.filter((item) => item.CourseState !== "ACTIVE")
+    const current = Courses.filter((item) => item.CourseState !== "ACTIVE")
     
         return (
-            Courses.map((item)=>(
+            current.map((item)=>(
                 <CourseCard course = {item}/>
                 ))
         )

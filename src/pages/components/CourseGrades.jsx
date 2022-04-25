@@ -3,13 +3,13 @@ import CourseCard from './CourseCard';
 import DemoCourses from './DemoCourses';
 
 
-function CourseGrades({}) {
+function CourseGrades({Courses}) {
 
     //TODO: implement this filter with the API
 
-    const current = DemoCourses.filter((item) => item.semester === "SP2022")
+    const current = Courses.filter((item) => item.courseState === "ACTIVE")
 
-    const past = DemoCourses.filter((item) => item.semester != "SP2022")
+    const past = Courses.filter((item) => item.courseState !== "ACTIVE")
 
     //TODO: implement key for event map
 return (

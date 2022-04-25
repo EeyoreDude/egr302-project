@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 import CourseGrades from "./components/CourseGrades"
 
-function Grades(){
+function Grades({Courses}){
 
     const auth = getAuth()
     
@@ -26,7 +26,7 @@ function Grades(){
                     <div className="row align-items-center my-5">
                         <div className="col-lg-10">
                             <h1 className="font-weight-light">Grades</h1>
-                                <CourseGrades />
+                                <CourseGrades Courses={Courses} />
                         </div>
                     </div>
                 </div>

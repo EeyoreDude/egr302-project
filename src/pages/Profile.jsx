@@ -7,9 +7,10 @@ import { updateDoc, doc } from "firebase/firestore"
 import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg'
 import { ReactComponent as CheckIcon } from '../assets/svg/checkIcon.svg'
 import { toast } from 'react-toastify'
+import OAuth from "./components/OAuth";
 
 
-function Profile() {
+function Profile({Courses, handleSetCourses}) {
     const auth = getAuth()
 
     const [changeDetails, setChangeDetails] = useState(false)
@@ -91,6 +92,7 @@ function Profile() {
                             </main>
 
                             <button className="m-0 btn-1 btnDark" onClick={signOut}>Sign Out</button>
+                            <OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
                         </div>
                     </div>
                 </div>
