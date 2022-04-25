@@ -7,12 +7,14 @@ function OAuth({Courses, handleSetCourses}){
 
     const responseGoogle = async (response) =>{
         console.log(response)
-        const headers = {'Authorization': "Bearer "+[response.accessToken]}
-        const res = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
-        const data = await res.json()
+        const resCourse = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
+        const dataCourse = await resCourse.json()
 
-        handleSetCourses(data.courses)
-        console.log(data)
+        const resAssign = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
+        const dataAssign = await resCourse.json()
+
+        handleSetCourses(dataCourse.courses)
+        console.log(dataCourse)
         //console.log(Courses)
     }
     
@@ -23,7 +25,7 @@ function OAuth({Courses, handleSetCourses}){
             buttonText='Login/Sign up with Google'
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            scope='https://www.googleapis.com/auth/classroom.courses.readonly'
+            scope='https://www.googleapis.com/auth/classroom.courses.readonly  https://www.googleapis.com/auth/classroom.coursework.students.readonly'
             cookiePolicy={"single_host_origin"}
             />
             </>
