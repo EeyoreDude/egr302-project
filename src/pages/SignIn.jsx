@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import Button from "./shared/Button";
+import OAuth from "./components/OAuth";
 
 function SignIn() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -96,7 +97,7 @@ function SignIn() {
 								<Link to="/sign-up" className="h6 mt-2 font-weight-light">
 									Sign Up
 								</Link>
-								{/* Google OAuth */}
+								<OAuth/>
 
 							</main>
 						</div>
