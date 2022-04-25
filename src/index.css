@@ -220,6 +220,16 @@
 	color: #707070
 }
 
+.upcomingText {
+	color:#000000
+}
+
+.upcomingText:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: #707070
+}
+
 
 .streamCard {
 	border-radius: 0.25rem;

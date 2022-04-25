@@ -38,8 +38,8 @@ export default function Home({events, Courses}) {
                                 <h1 className="font-weight-light">Upcoming</h1>
                                 <ul>
                                 {upcoming.map((item)=>(
-                                    <li className="homeText">
-                                        <a href={`course/${item.course}/${item.id}`}>{item.title}</a>
+                                    <li className="upcomingText" onClick={ () => navigate('course/' + item.course + '/' + item.id)}>
+                                        {item.title}
                                     </li>
                                 ))}
                                 </ul>
