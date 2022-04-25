@@ -2,6 +2,10 @@
 	EGR302 SPECIALLY ADDED STYLES
 **/
 
+.top-align{
+	vertical-align: top;
+}
+
 .fs-12 {
 	font-size: 1pt;
 }
@@ -190,6 +194,32 @@
 	width: fit-content;
 	height: fit-content;
 }
+
+.homeCard {
+	border-radius: 0.25rem;
+	padding: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.2);
+	background-color: #ebebeb;
+	width: 30vh;
+	height: 20vh;
+}
+
+.homeCard:hover{
+	background-color: #f0f0f0;
+}
+
+.homeTextNormal {
+	font-size: 24pt;
+	color:#000000
+}
+
+.homeTextNormal:hover {
+	font-size: 24pt;
+	color: #707070
+}
+
 
 .streamCard {
 	border-radius: 0.25rem;

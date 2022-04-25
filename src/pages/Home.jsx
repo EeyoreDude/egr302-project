@@ -30,17 +30,20 @@ export default function Home({events}) {
             <div className="pageLayout">
                 <div className="container">
                     <div className="row align-items-center my-5">
-                        <div className="col-lg-10">
+                        <div className="col-8 h-100">
                             <h1 className="font-weight-light">{user ? user.displayName : 'please sign in or register to use most features'}'s Courses</h1>
                             <CourseDisplay/>
-                            <div>
-                                <h1 className="font-weight-light">Upcoming</h1>
-                                <br></br>
-                                {upcoming.map((item)=>(
-                                <p className="streamText">- {item.title}</p>
-                                ))}
-                            </div>
                         </div>
+                        <div className="col top-align h-100">
+                                <h1 className="font-weight-light">Upcoming</h1>
+                                <ul>
+                                {upcoming.map((item)=>(
+                                    <li className="homeText">
+                                        <a href={`course/${item.course}/${item.id}`}>{item.title}</a>
+                                    </li>
+                                ))}
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>

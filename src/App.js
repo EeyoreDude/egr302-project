@@ -9,11 +9,10 @@ import {
 	Home,
 	Navbar,
 	Assignment,
-	GradedAssignment,
 	CourseGrades,
 	ForgotPassword,
 	SignIn,
-	SignUp,
+	SignUp, 
 	Profile,
 } from "./pages/pageExports.js";
 import PrivateRoute from "./pages/components/PrivateRoute";
@@ -112,11 +111,6 @@ function App() {
 
 						<Route path="/grades/:semester/:courseCode" element={<CourseGrades />} />
 						
-						<Route
-							path="/grades/:semester/:courseCode/:assignmentID"
-							element={<GradedAssignment />}
-						/>
-
 						<Route path="/profile" element={<PrivateRoute />}>
 							<Route path="/profile" element={<Profile />} />
 						</Route>

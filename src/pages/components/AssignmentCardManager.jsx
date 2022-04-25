@@ -8,15 +8,11 @@ import { useNavigate } from "react-router";
 
 function AssignmentCardManager({ assignments }) {
 
-    const [assignmentList, setAssignments] = useState(assignments); 
- 
-    console.log(assignmentList) 
-
-    if(assignmentList != undefined){ 
+    if(assignments != undefined && ! assignments.isEmpty){ 
         return (   
             <div className="col-lg-10">
                 <h4 className="font-weight-light">Grades</h4>
-                {assignmentList.map((item) => (
+                {assignments.map((item) => (
                     <AssignmentCard isDull={false} key={item.id} event={item} />
                 ))}
             </div>
