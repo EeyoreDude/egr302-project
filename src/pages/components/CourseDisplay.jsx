@@ -3,10 +3,10 @@ import DemoCourses from "./DemoCourses"
 
 function CourseDisplay(){
 
-
+    const current = DemoCourses.filter((item) => item.semester === "SP2022")
     
         return (
-            DemoCourses.map((item)=>(
+            current.map((item)=>(
                 <CourseCard course = {item}/>
                 ))
         )
