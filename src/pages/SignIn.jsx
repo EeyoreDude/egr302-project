@@ -7,7 +7,7 @@ import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import Button from "./shared/Button";
 import OAuth from "./components/OAuth";
 
-function SignIn() {
+function SignIn({Courses, handleSetCourses}) {
 	const [showPassword, setShowPassword] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
@@ -97,7 +97,7 @@ function SignIn() {
 								<Link to="/sign-up" className="h6 mt-2 font-weight-light">
 									Sign Up
 								</Link>
-								<OAuth/>
+								<OAuth Courses = {Courses} handleSetCourses={handleSetCourses}/>
 
 							</main>
 						</div>

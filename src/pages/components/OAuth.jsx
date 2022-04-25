@@ -1,7 +1,7 @@
 import {GoogleLogin} from 'react-google-login'
 //import {google} from 'googleapis'
 
-function OAuth(){
+function OAuth({Courses, handleSetCourses}){
 
     
 
@@ -11,7 +11,7 @@ function OAuth(){
         const res = await fetch('https://classroom.googleapis.com/v1/courses',{credentials: "omit", headers:{'Authorization': "Bearer "+[response.accessToken]}})
         const data = await res.json()
 
-        
+        handleSetCourses(data.courses)
         console.log(data)
         //console.log(Courses)
     }

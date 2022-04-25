@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import CourseDisplay from "./components/CourseDisplay";
 
-export default function Home({events}) {
+export default function Home({events, Courses}) {
 
     const upcoming = events.filter((item) => item.start.getDate() >  new Date().getDate() &&
                                                 item.start.getMonth() >=  new Date().getMonth() &&
@@ -32,7 +32,7 @@ export default function Home({events}) {
                     <div className="row align-items-center my-5">
                         <div className="col-8 h-100">
                             <h1 className="font-weight-light">{user ? user.displayName : 'please sign in or register to use most features'}'s Courses</h1>
-                            <CourseDisplay/>
+                            <CourseDisplay Courses={Courses}/>
                         </div>
                         <div className="col top-align h-100">
                                 <h1 className="font-weight-light">Upcoming</h1>

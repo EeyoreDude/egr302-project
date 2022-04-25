@@ -24,6 +24,12 @@ import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
 
 
 function App() {
+	const [Courses,setCourses] = useState([]) 
+
+	const generateCourses = (newCourses) =>{
+		setCourses(newCourses);
+	}
+
 	// Send events to the calendar
 	const isMounted = useRef(true)
 
@@ -90,7 +96,7 @@ function App() {
 				<Navbar />
 				<div className="centralContainer"> 
 					<Routes>
-            <Route path="/" element={<Home events = {events}/>} />
+            <Route path="/" element={<Home events = {events} Courses={Courses}/>} />
 						<Route
 							path="/calendar"
 							element={
@@ -114,7 +120,7 @@ function App() {
 						<Route path="/profile" element={<PrivateRoute />}>
 							<Route path="/profile" element={<Profile />} />
 						</Route>
-						<Route path="/sign-in" element={<SignIn />} />
+						<Route path="/sign-in" element={<SignIn Courses={Courses} handleSetCourses={generateCourses} />} />
 						<Route path="/sign-up" element={<SignUp />} />
 						<Route path="/forgot-password" element={<ForgotPassword />} />
 					</Routes>

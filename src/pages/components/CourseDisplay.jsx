@@ -1,12 +1,12 @@
 import CourseCard from "./CourseCard"
 import DemoCourses from "./DemoCourses"
 
-function CourseDisplay(){
+function CourseDisplay({Courses}){
 
-    const current = DemoCourses.filter((item) => item.semester === "SP2022")
+    //const current = Courses.filter((item) => item.CourseState !== "ACTIVE")
     
         return (
-            current.map((item)=>(
+            Courses.map((item)=>(
                 <CourseCard course = {item}/>
                 ))
         )
